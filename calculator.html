@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EB-5 Eligibility Calculator - EKA EB5 Consultants</title>
+    <meta name="description" content="Calculate your EB-5 visa eligibility in minutes. Free interactive calculator to assess your qualifications for US investment immigration.">
+    <meta name="keywords" content="EB-5 calculator, visa eligibility, investment visa calculator, green card eligibility">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- SEO -->
+    <link rel="canonical" href="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/calculator.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="EB-5 Eligibility Calculator - EKA EB5">
+    <meta property="og:description" content="Calculate your EB-5 visa eligibility in minutes">
+    <meta property="og:url" content="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/calculator.html">
+    
+    <style>
+        :root {
+            --primary-color: #2d4a47;
+            --secondary-color: #c4a484;
+            --accent-teal: #5a8a87;
+            --warm-beige: #f5f0e8;
+            --text-primary: #2d4a47;
+            --text-secondary: #6B7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d5 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(45, 74, 71, 0.15);
+            overflow: hidden;
+        }
+
+        .calculator-header {
+            background: linear-gradient(135deg, #2d4a47 0%, #5a8a87 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .calculator-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .calculator-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            margin-top: 2rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .calculator-body {
+            padding: 3rem 2rem;
+        }
+
+        .calculator-step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .calculator-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .form-group select,
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 4px rgba(90, 138, 135, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--accent-teal);
+            background: rgba(90, 138, 135, 0.05);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent-teal);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(45, 74, 71, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results Page */
+        .results-container {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .score-circle {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .score-circle.excellent {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+        }
+
+        .score-circle.good {
+            background: linear-gradient(135deg, #2196f3, #1565c0);
+        }
+
+        .score-circle.fair {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+
+        .score-circle.poor {
+            background: linear-gradient(135deg, #f44336, #c62828);
+        }
+
+        .score-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .eligibility-badge {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--warm-beige);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 1rem 0 2rem;
+            font-size: 1.1rem;
+        }
+
+        .eligibility-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .recommendations {
+            text-align: left;
+            margin: 3rem 0;
+            background: var(--warm-beige);
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .recommendations h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .recommendation-item {
+            padding: 1rem;
+            background: white;
+            border-left: 4px solid var(--accent-teal);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .recommendation-item i {
+            color: var(--accent-teal);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .next-steps {
+            text-align: left;
+            margin: 3rem 0;
+        }
+
+        .next-steps h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+        }
+
+        .next-steps li {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 0.75rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .next-steps li i {
+            color: var(--accent-teal);
+            font-size: 1.3rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2d4a47 0%, #5a8a87 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+            flex: 1;
+        }
+
+        .btn-white:hover {
+            background: var(--warm-beige);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            flex: 1;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .calculator-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .calculator-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .score-circle {
+                width: 180px;
+                height: 180px;
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <h1>🎯 EB-5 Eligibility Calculator</h1>
+            <p>Answer a few questions to assess your EB-5 visa eligibility</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="calculator-body">
+            <!-- Step 1: Investment Amount -->
+            <div class="calculator-step active" data-step="1">
+                <h2 class="step-title">Step 1: Investment Capacity</h2>
+                <p class="step-subtitle">Let's understand your financial readiness</p>
+                
+                <div class="form-group">
+                    <label for="investmentAmount">How much can you invest in USD? *</label>
+                    <select id="investmentAmount" required>
+                        <option value="">Select investment amount</option>
+                        <option value="1050000">$1,050,000 or more (Standard Area)</option>
+                        <option value="800000">$800,000 - $1,049,999 (TEA - Targeted Employment Area)</option>
+                        <option value="less">Less than $800,000</option>
+                    </select>
+                    <small>TEA (Targeted Employment Area) offers lower investment threshold</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="netWorth">What is your total net worth in USD? *</label>
+                    <select id="netWorth" required>
+                        <option value="">Select net worth range</option>
+                        <option value="3000000">$3,000,000 or more</option>
+                        <option value="2000000">$2,000,000 - $2,999,999</option>
+                        <option value="1500000">$1,500,000 - $1,999,999</option>
+                        <option value="1000000">$1,000,000 - $1,499,999</option>
+                        <option value="less">Less than $1,000,000</option>
+                    </select>
+                    <small>Net worth should ideally be 2x your investment amount</small>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Source of Funds -->
+            <div class="calculator-step" data-step="2">
+                <h2 class="step-title">Step 2: Source of Funds</h2>
+                <p class="step-subtitle">USCIS requires clear documentation of fund sources</p>
+                
+                <div class="form-group">
+                    <label>Select all sources of your investment funds: *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="source1" value="business_income">
+                            <label for="source1">
+                                <strong>Business Income</strong><br>
+                                <small>Profits from owned businesses</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="source2" value="property_sale">
+                            <label for="source2">
+                                <strong>Property Sale</strong><br>
+                                <small>Proceeds from real estate sales</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="source3" value="inheritance">
+                            <label for="source3">
+                                <strong>Inheritance</strong><br>
+                                <small>Inherited wealth from family</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="source4" value="gift">
+                            <label for="source4">
+                                <strong>Gift from Family</strong><br>
+                                <small>Monetary gifts from relatives</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="source5" value="salary">
+                            <label for="source5">
+                                <strong>Salary/Savings</strong><br>
+                                <small>Accumulated employment income</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="source6" value="investments">
+                            <label for="source6">
+                                <strong>Investment Returns</strong><br>
+                                <small>Stock market, mutual funds, etc.</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="documentation">Can you document the source of your funds? *</label>
+                    <select id="documentation" required>
+                        <option value="">Select documentation status</option>
+                        <option value="complete">Yes, I have complete documentation</option>
+                        <option value="partial">Partially, some documents available</option>
+                        <option value="limited">Limited documentation available</option>
+                        <option value="none">No documentation yet</option>
+                    </select>
+                    <small>Documentation includes tax returns, bank statements, sale deeds, etc.</small>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Family Information -->
+            <div class="calculator-step" data-step="3">
+                <h2 class="step-title">Step 3: Family Information</h2>
+                <p class="step-subtitle">EB-5 visa includes your spouse and unmarried children under 21</p>
+                
+                <div class="form-group">
+                    <label for="familySize">How many family members will apply? *</label>
+                    <select id="familySize" required onchange="toggleChildrenInput()">
+                        <option value="">Select family size</option>
+                        <option value="1">Just me (individual applicant)</option>
+                        <option value="2">2 (me + spouse)</option>
+                        <option value="3">3 (me + spouse + 1 child)</option>
+                        <option value="4">4 (me + spouse + 2 children)</option>
+                        <option value="5">5+ family members</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="childrenAgesGroup" style="display: none;">
+                    <label for="childrenAges">Ages of children (comma-separated):</label>
+                    <input type="text" 
+                           id="childrenAges" 
+                           placeholder="e.g., 15, 18, 20">
+                    <small>⚠️ Children must be under 21 and unmarried to qualify. CSPA protection may apply.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="maritalStatus">Marital Status: *</label>
+                    <select id="maritalStatus" required>
+                        <option value="">Select status</option>
+                        <option value="married">Married</option>
+                        <option value="single">Single</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Timeline & Goals -->
+            <div class="calculator-step" data-step="4">
+                <h2 class="step-title">Step 4: Timeline & Goals</h2>
+                <p class="step-subtitle">Understanding your timeline helps us provide better guidance</p>
+                
+                <div class="form-group">
+                    <label for="timeline">When do you plan to start the EB-5 process? *</label>
+                    <select id="timeline" required>
+                        <option value="">Select timeframe</option>
+                        <option value="immediate">Immediately (within 3 months)</option>
+                        <option value="soon">Soon (3-6 months)</option>
+                        <option value="planning">Planning (6-12 months)</option>
+                        <option value="exploring">Just exploring (12+ months)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>What are your primary goals? (Select all that apply) *</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="goal1" value="education">
+                            <label for="goal1">
+                                <strong>Children's Education</strong><br>
+                                <small>Access to US schools and universities</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="goal2" value="business">
+                            <label for="goal2">
+                                <strong>Business Opportunities</strong><br>
+                                <small>Expand business to US market</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="goal3" value="lifestyle">
+                            <label for="goal3">
+                                <strong>Lifestyle & Quality of Life</strong><br>
+                                <small>Better living environment</small>
+                            </label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="goal4" value="security">
+                            <label for="goal4">
+                                <strong>Financial Security</strong><br>
+                                <small>Diversification and stability</small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn btn-primary" onclick="calculateResults()">
+                        <i class="fas fa-calculator"></i> Calculate Results
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Results -->
+            <div class="calculator-step" data-step="5">
+                <div class="results-container">
+                    <h2 class="step-title">Your EB-5 Eligibility Results</h2>
+                    
+                    <div class="score-circle" id="scoreCircle">
+                        <div>
+                            <span id="scoreValue">0</span>
+                            <div class="score-label">/ 100</div>
+                        </div>
+                    </div>
+                    
+                    <div class="eligibility-badge" id="eligibilityBadge">
+                        Calculating...
+                    </div>
+                    
+                    <p class="eligibility-description" id="eligibilityDescription"></p>
+                    
+                    <div class="recommendations" id="recommendationsSection" style="display: none;">
+                        <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                        <div id="recommendationsList"></div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <h3><i class="fas fa-list-check"></i> Your Next Steps</h3>
+                        <ul id="nextStepsList"></ul>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <h3>Ready to Start Your EB-5 Journey?</h3>
+                        <p>Schedule a free consultation with our experts to discuss your personalized pathway to US permanent residency.</p>
+                        
+                        <div class="cta-buttons">
+                            <button class="btn btn-white" onclick="scheduleConsultation()">
+                                <i class="fas fa-calendar"></i> Schedule Free Consultation
+                            </button>
+                            <button class="btn btn-outline" onclick="downloadResults()">
+                                <i class="fas fa-download"></i> Download Results
+                            </button>
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <button class="btn btn-outline" onclick="restartCalculator()">
+                                <i class="fas fa-rotate-right"></i> Start Over
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        function toggleChildrenInput() {
+            const familySize = parseInt(document.getElementById('familySize').value);
+            const childrenGroup = document.getElementById('childrenAgesGroup');
+            
+            if (familySize >= 3) {
+                childrenGroup.style.display = 'block';
+            } else {
+                childrenGroup.style.display = 'none';
+            }
+        }
+        
+        function validateStep(step) {
+            const stepElement = document.querySelector(`.calculator-step[data-step="${step}"]`);
+            const requiredSelects = stepElement.querySelectorAll('select[required]');
+            
+            for (let select of requiredSelects) {
+                if (!select.value) {
+                    alert('Please fill in all required fields');
+                    select.focus();
+                    return false;
+                }
+            }
+            
+            // Step 2: Check at least one source selected
+            if (step === 2) {
+                const sources = stepElement.querySelectorAll('input[type="checkbox"]:checked');
+                if (sources.length === 0) {
+                    alert('Please select at least one source of funds');
+                    return false;
+                }
+            }
+            
+            // Step 4: Check at least one goal selected
+            if (step === 4) {
+                const goals = stepElement.querySelectorAll('input[type="checkbox"]:checked');
+                if (goals.length === 0) {
+                    alert('Please select at least one goal');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
+        function nextStep() {
+            if (!validateStep(currentStep)) {
+                return;
+            }
+            
+            // Hide current step
+            document.querySelector(`.calculator-step[data-step="${currentStep}"]`).classList.remove('active');
+            
+            // Show next step
+            currentStep++;
+            document.querySelector(`.calculator-step[data-step="${currentStep}"]`).classList.add('active');
+            
+            updateProgress();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Track in analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'calculator_step', {
+                    step_number: currentStep
+                });
+            }
+        }
+        
+        function prevStep() {
+            // Hide current step
+            document.querySelector(`.calculator-step[data-step="${currentStep}"]`).classList.remove('active');
+            
+            // Show previous step
+            currentStep--;
+            document.querySelector(`.calculator-step[data-step="${currentStep}"]`).classList.add('active');
+            
+            updateProgress();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function calculateResults() {
+            if (!validateStep(currentStep)) {
+                return;
+            }
+            
+            let score = 0;
+            let recommendations = [];
+            
+            // Investment amount (30 points)
+            const investment = document.getElementById('investmentAmount').value;
+            if (investment === '1050000') {
+                score += 30;
+            } else if (investment === '800000') {
+                score += 25;
+            } else {
+                score += 0;
+                recommendations.push('Increase investment to minimum $800,000 for TEA or $1,050,000 for standard area');
+            }
+            
+            // Net worth (20 points)
+            const netWorth = parseInt(document.getElementById('netWorth').value);
+            const investmentAmount = parseInt(investment);
+            
+            if (netWorth >= 3000000) {
+                score += 20;
+            } else if (netWorth >= 2000000) {
+                score += 18;
+            } else if (netWorth >= investmentAmount * 2) {
+                score += 15;
+            } else if (netWorth >= investmentAmount * 1.5) {
+                score += 10;
+            } else {
+                score += 5;
+                recommendations.push('Build net worth to at least 2x your investment amount for stronger application');
+            }
+            
+            // Source of funds (25 points)
+            const sources = document.querySelectorAll('input[id^="source"]:checked');
+            if (sources.length >= 3) {
+                score += 25;
+            } else if (sources.length === 2) {
+                score += 20;
+            } else if (sources.length === 1) {
+                score += 10;
+                recommendations.push('Diversify source of funds with at least 2 different sources for stronger application');
+            }
+            
+            // Documentation (15 points)
+            const docs = document.getElementById('documentation').value;
+            if (docs === 'complete') {
+                score += 15;
+            } else if (docs === 'partial') {
+                score += 10;
+                recommendations.push('Complete documentation for all fund sources to strengthen your petition');
+            } else if (docs === 'limited') {
+                score += 5;
+                recommendations.push('Gather comprehensive documentation including tax returns, bank statements, and source documents');
+            } else {
+                recommendations.push('Start gathering documentation immediately - this is critical for USCIS approval');
+            }
+            
+            // Family considerations (10 points)
+            const childrenAges = document.getElementById('childrenAges').value;
+            if (childrenAges) {
+                const ages = childrenAges.split(',').map(age => parseInt(age.trim())).filter(age => !isNaN(age));
+                const allUnder19 = ages.every(age => age < 19);
+                const anyOver21 = ages.some(age => age >= 21);
+                
+                if (allUnder19) {
+                    score += 10;
+                } else if (!anyOver21) {
+                    score += 7;
+                    recommendations.push('Consider CSPA (Child Status Protection Act) for children approaching age 21');
+                } else {
+                    score += 3;
+                    recommendations.push('Children over 21 cannot be included in your EB-5 petition - they need separate visas');
+                }
+            } else {
+                score += 10; // No children = no age-out risk
+            }
+            
+            // Display results
+            displayResults(score, recommendations);
+            
+            // Track completion
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'calculator_complete', {
+                    score: score,
+                    eligibility_level: getEligibilityLevel(score)
+                });
+            }
+        }
+        
+        function getEligibilityLevel(score) {
+            if (score >= 90) return 'Excellent';
+            if (score >= 75) return 'Good';
+            if (score >= 60) return 'Fair';
+            return 'Needs Improvement';
+        }
+        
+        function displayResults(score, recommendations) {
+            // Hide current step
+            document.querySelector(`.calculator-step[data-step="${currentStep}"]`).classList.remove('active');
+            
+            // Show results
+            currentStep = 5;
+            document.querySelector(`.calculator-step[data-step="5"]`).classList.add('active');
+            updateProgress();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Animate score
+            animateScore(score);
+            
+            // Set eligibility level
+            let level, description, circleClass;
+            if (score >= 90) {
+                level = 'Excellent - Highly Qualified';
+                description = '🎉 Congratulations! You are an excellent candidate for the EB-5 program. Your profile meets all key requirements and you have a very strong chance of approval.';
+                circleClass = 'excellent';
+            } else if (score >= 75) {
+                level = 'Good - Well Qualified';
+                description = '✅ Great news! You are a strong candidate for the EB-5 program. With minor improvements, you can have an excellent application.';
+                circleClass = 'good';
+            } else if (score >= 60) {
+                level = 'Fair - Qualified with Improvements';
+                description = '⚠️ You can qualify for EB-5, but your application would benefit from some improvements. We can help you strengthen your profile.';
+                circleClass = 'fair';
+            } else {
+                level = 'Needs Improvement';
+                description = '📋 Your profile needs strengthening before applying for EB-5. Don\'t worry - we can help you prepare and improve your eligibility.';
+                circleClass = 'poor';
+            }
+            
+            document.getElementById('eligibilityBadge').textContent = level;
+            document.getElementById('eligibilityDescription').textContent = description;
+            document.getElementById('scoreCircle').className = 'score-circle ' + circleClass;
+            
+            // Display recommendations
+            const recSection = document.getElementById('recommendationsSection');
+            const recList = document.getElementById('recommendationsList');
+            recList.innerHTML = '';
+            
+            if (recommendations.length > 0) {
+                recSection.style.display = 'block';
+                recommendations.forEach(rec => {
+                    const div = document.createElement('div');
+                    div.className = 'recommendation-item';
+                    div.innerHTML = `<i class="fas fa-circle-exclamation"></i><div>${rec}</div>`;
+                    recList.appendChild(div);
+                });
+            }
+            
+            // Display next steps
+            const nextSteps = getNextSteps(score);
+            const stepsList = document.getElementById('nextStepsList');
+            stepsList.innerHTML = '';
+            
+            nextSteps.forEach(step => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i><div>${step}</div>`;
+                stepsList.appendChild(li);
+            });
+        }
+        
+        function getNextSteps(score) {
+            if (score >= 75) {
+                return [
+                    'Schedule a free consultation with EKA EB5 experts',
+                    'Prepare source of funds documentation',
+                    'Review regional center project options',
+                    'Begin preliminary due diligence',
+                    'Download our comprehensive EB-5 guide'
+                ];
+            } else if (score >= 60) {
+                return [
+                    'Download our free EB-5 Complete Guide',
+                    'Review eligibility requirements in detail',
+                    'Work on strengthening your profile',
+                    'Schedule preliminary consultation with EKA',
+                    'Explore alternative visa options if needed'
+                ];
+            } else {
+                return [
+                    'Download our free EB-5 Complete Guide',
+                    'Understand the program requirements',
+                    'Work on building your financial profile',
+                    'Schedule consultation to discuss preparation',
+                    'Consider timeline for when you\'ll be ready'
+                ];
+            }
+        }
+        
+        function animateScore(targetScore) {
+            let current = 0;
+            const increment = targetScore / 50;
+            const scoreElement = document.getElementById('scoreValue');
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= targetScore) {
+                    current = targetScore;
+                    clearInterval(timer);
+                }
+                scoreElement.textContent = Math.round(current);
+            }, 20);
+        }
+        
+        function scheduleConsultation() {
+            // Track conversion
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'consultation_click', {
+                    source: 'calculator'
+                });
+            }
+            
+            // Open Calendly
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({
+                    url: 'https://calendly.com/YOUR_USERNAME/30min'
+                });
+            } else {
+                // Fallback to WhatsApp
+                window.open('https://wa.me/917979007970?text=Hi%2C%20I%20completed%20the%20EB-5%20calculator%20and%20would%20like%20to%20schedule%20a%20consultation', '_blank');
+            }
+        }
+        
+        function downloadResults() {
+            // Track download
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    file_name: 'eb5-eligibility-results',
+                    source: 'calculator'
+                });
+            }
+            
+            // For now, open contact page
+            alert('PDF download feature coming soon! For now, please screenshot your results or schedule a consultation to receive a detailed report via email.');
+        }
+        
+        function restartCalculator() {
+            currentStep = 1;
+            document.querySelectorAll('.calculator-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.querySelector('.calculator-step[data-step="1"]').classList.add('active');
+            
+            // Reset form
+            document.querySelectorAll('select').forEach(field => {
+                field.value = '';
+            });
+            document.querySelectorAll('input[type="checkbox"]').forEach(field => {
+                field.checked = false;
+            });
+            document.querySelectorAll('input[type="text"]').forEach(field => {
+                field.value = '';
+            });
+            
+            updateProgress();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Initialize
+        updateProgress();
+    </script>
+
+    <!-- Calendly Script -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</body>
+</html>
