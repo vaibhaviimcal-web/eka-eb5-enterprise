@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login V2 - EKA EB5</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #8b7ba8 0%, #5a8a87 100%);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            color: #2d4a47;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #6B7280;
+            font-size: 0.95rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .alert-error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .alert-success {
+            background: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+
+        .alert-info {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #90caf9;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            border: none;
+        }
+
+        .btn-google {
+            background: white;
+            color: #444;
+            border: 2px solid #ddd;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-google:hover {
+            background: #f8f9fa;
+            border-color: #4285f4;
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+        }
+
+        .btn-google:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: #e8e0d5;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 1rem;
+            position: relative;
+            color: #6B7280;
+            font-size: 0.875rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2d4a47;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6B7280;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border: 2px solid #e8e0d5;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #5a8a87;
+            box-shadow: 0 0 0 3px rgba(90, 138, 135, 0.1);
+        }
+
+        .btn-login {
+            background: #2d4a47;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background: #5a8a87;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .email-form {
+            display: none;
+        }
+
+        .toggle-form {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .toggle-form button {
+            background: none;
+            border: none;
+            color: #5a8a87;
+            cursor: pointer;
+            font-size: 0.875rem;
+            text-decoration: underline;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-link a {
+            color: #5a8a87;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .debug-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .debug-info div {
+            margin: 0.25rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1>Admin Login V2</h1>
+            <p class="subtitle">EKA EB5 Content Management</p>
+        </div>
+
+        <div id="alertBox" class="alert"></div>
+
+        <button id="googleBtn" class="btn btn-google">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            <span>Sign in with Google</span>
+        </button>
+
+        <div class="divider"><span>or use email/password</span></div>
+
+        <form id="emailForm" class="email-form">
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrapper">
+                    <i class="far fa-envelope"></i>
+                    <input type="email" id="email" placeholder="admin@ekaeb5.com" autocomplete="email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+                </div>
+            </div>
+
+            <button type="submit" id="loginBtn" class="btn btn-login">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>Sign In</span>
+            </button>
+        </form>
+
+        <div class="toggle-form">
+            <button id="toggleBtn">Use email/password instead</button>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Website
+            </a>
+        </div>
+
+        <div class="debug-info" id="debugInfo">
+            <div><strong>Debug Info:</strong></div>
+            <div id="debugStatus">Initializing...</div>
+        </div>
+    </div>
+
+    <script>
+        // EMBEDDED FIREBASE CONFIG - UPDATE THIS WITH CORRECT VALUES
+        const firebaseConfig = {
+            apiKey: "AIzaSyAMiBOT5fNsEcmDed4-wmNiXx9EvAn9R7w",
+            authDomain: "eka-eb5-website.firebaseapp.com",
+            projectId: "eka-eb5-website",
+            storageBucket: "eka-eb5-website.firebasestorage.app",
+            messagingSenderId: "699403466862",
+            appId: "1:699403466862:web:d919169cba9f7d32804e7f",
+            measurementId: "G-1VPJDEBM44"
+        };
+
+        const ADMIN_EMAILS = ['vaibhav.iimcal@gmail.com', 'admin@ekaeb5.com'];
+
+        const googleBtn = document.getElementById('googleBtn');
+        const emailForm = document.getElementById('emailForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const alertBox = document.getElementById('alertBox');
+        const debugInfo = document.getElementById('debugStatus');
+
+        // Initialize Firebase
+        let auth;
+        try {
+            firebase.initializeApp(firebaseConfig);
+            auth = firebase.auth();
+            updateDebug('✅ Firebase initialized', 'success');
+            console.log('✅ Firebase initialized successfully');
+        } catch (error) {
+            updateDebug('❌ Firebase init failed: ' + error.message, 'error');
+            console.error('❌ Firebase init error:', error);
+        }
+
+        // Check if already logged in
+        auth.onAuthStateChanged((user) => {
+            if (user && ADMIN_EMAILS.includes(user.email)) {
+                window.location.href = 'admin.html';
+            }
+        });
+
+        // Toggle form
+        toggleBtn.addEventListener('click', () => {
+            if (emailForm.style.display === 'none' || !emailForm.style.display) {
+                emailForm.style.display = 'block';
+                toggleBtn.textContent = 'Use Google Sign-In instead';
+                googleBtn.style.display = 'none';
+            } else {
+                emailForm.style.display = 'none';
+                toggleBtn.textContent = 'Use email/password instead';
+                googleBtn.style.display = 'flex';
+            }
+        });
+
+        // Google Sign-In
+        googleBtn.addEventListener('click', async () => {
+            googleBtn.disabled = true;
+            googleBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+            hideAlert();
+            updateDebug('🔄 Attempting Google Sign-In...');
+
+            try {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                const result = await auth.signInWithPopup(provider);
+                const user = result.user;
+
+                updateDebug('✅ Google Sign-In successful: ' + user.email, 'success');
+
+                if (ADMIN_EMAILS.includes(user.email)) {
+                    showAlert('Login successful! Redirecting...', 'success');
+                    setTimeout(() => window.location.href = 'admin.html', 1000);
+                } else {
+                    await auth.signOut();
+                    showAlert('Access denied. Not an admin email.', 'error');
+                    updateDebug('❌ Access denied: ' + user.email, 'error');
+                    resetGoogleBtn();
+                }
+            } catch (error) {
+                console.error('❌ Google Sign-In error:', error);
+                updateDebug('❌ Error: ' + error.code + ' - ' + error.message, 'error');
+                
+                if (error.code === 'auth/popup-closed-by-user') {
+                    showAlert('Sign-in cancelled', 'info');
+                } else if (error.code === 'auth/popup-blocked') {
+                    showAlert('Popup blocked. Please allow popups.', 'error');
+                } else {
+                    showAlert('Error: ' + error.message, 'error');
+                }
+                resetGoogleBtn();
+            }
+        });
+
+        // Email/Password Login
+        emailForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+            hideAlert();
+            updateDebug('🔄 Attempting email login...');
+
+            try {
+                const result = await auth.signInWithEmailAndPassword(email, password);
+                const user = result.user;
+
+                updateDebug('✅ Email login successful: ' + user.email, 'success');
+
+                if (ADMIN_EMAILS.includes(user.email)) {
+                    showAlert('Login successful! Redirecting...', 'success');
+                    setTimeout(() => window.location.href = 'admin.html', 1000);
+                } else {
+                    await auth.signOut();
+                    showAlert('Access denied. Not an admin email.', 'error');
+                    updateDebug('❌ Access denied: ' + user.email, 'error');
+                    resetLoginBtn();
+                }
+            } catch (error) {
+                console.error('❌ Email login error:', error);
+                updateDebug('❌ Error: ' + error.code + ' - ' + error.message, 'error');
+                showAlert(getErrorMessage(error.code), 'error');
+                resetLoginBtn();
+            }
+        });
+
+        function showAlert(message, type) {
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type}`;
+            alertBox.style.display = 'block';
+        }
+
+        function hideAlert() {
+            alertBox.style.display = 'none';
+        }
+
+        function updateDebug(message, type = 'info') {
+            const color = type === 'success' ? '#3c3' : type === 'error' ? '#c33' : '#666';
+            debugInfo.innerHTML = `<span style="color: ${color}">${message}</span>`;
+        }
+
+        function resetGoogleBtn() {
+            googleBtn.disabled = false;
+            googleBtn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                <span>Sign in with Google</span>
+            `;
+        }
+
+        function resetLoginBtn() {
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>Sign In</span>';
+        }
+
+        function getErrorMessage(errorCode) {
+            const errors = {
+                'auth/user-not-found': 'No account found with this email.',
+                'auth/wrong-password': 'Incorrect password.',
+                'auth/invalid-email': 'Invalid email format.',
+                'auth/too-many-requests': 'Too many attempts. Try again later.',
+                'auth/invalid-credential': 'Invalid credentials.',
+                'auth/network-request-failed': 'Network error. Check connection.'
+            };
+            return errors[errorCode] || 'Login failed. Please try again.';
+        }
+    </script>
+</body>
+</html>
