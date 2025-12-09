@@ -1,12 +1,12 @@
-// Firebase Configuration
-// Replace these values with your actual Firebase project credentials
+// Firebase Configuration - EKA EB5 Website
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY_HERE",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAMiBOT5fNsEcmDgd4-wmNiXx9EvAn9R7w",
+    authDomain: "eka-eb5-website.firebaseapp.com",
+    projectId: "eka-eb5-website",
+    storageBucket: "eka-eb5-website.firebasestorage.app",
+    messagingSenderId: "699403466862",
+    appId: "1:699403466862:web:d919169cba9f7d32804e7f",
+    measurementId: "G-1VPJDEBM44"
 };
 
 // Initialize Firebase
