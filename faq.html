@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - EKA EB5 Consultants LLP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2d4a47;
+            --secondary-color: #c4a484;
+            --accent-teal: #5a8a87;
+            --text-primary: #2d4a47;
+            --text-secondary: #6B7280;
+            --bg-secondary: #f5f0e8;
+            --border-color: #e8e0d5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.8;
+            background: var(--bg-secondary);
+        }
+        .header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .back-link {
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem 3rem;
+        }
+        .page-header {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        .faq-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-teal);
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: var(--accent-teal);
+        }
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--accent-teal);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-secondary);
+            padding-top: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding-top: 1rem;
+        }
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #5a8a87 0%, #2d4a47 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .cta-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-passport"></i> EKA EB5
+            </a>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Frequently Asked Questions</h1>
+            <p class="subtitle">Everything you need to know about the EB-5 visa program and our services</p>
+        </div>
+
+        <!-- General EB-5 Questions -->
+        <div class="faq-category">
+            <h2 class="category-title"><i class="fas fa-info-circle"></i> General EB-5 Program</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the EB-5 visa program?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The EB-5 Immigrant Investor Program is a United States visa program created by Congress in 1990 to stimulate the US economy through job creation and capital investment by foreign investors. It provides a pathway to permanent residency (green card) for investors and their immediate family members who invest in qualifying US businesses.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much do I need to invest?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The minimum investment amounts are:</p>
+                    <ul>
+                        <li><strong>$800,000 USD</strong> - For investments in Targeted Employment Areas (TEA), which are rural areas or areas with high unemployment</li>
+                        <li><strong>$1,050,000 USD</strong> - For investments in standard (non-TEA) areas</li>
+                    </ul>
+                    <p>Most investors choose TEA projects to benefit from the lower investment threshold.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Who is eligible for the EB-5 program?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>To be eligible for EB-5, you must:</p>
+                    <ul>
+                        <li>Have the required investment capital ($800,000 or $1,050,000)</li>
+                        <li>Prove the lawful source of your investment funds</li>
+                        <li>Invest in a USCIS-approved regional center or qualifying direct business</li>
+                        <li>Create or preserve at least 10 full-time jobs for US workers</li>
+                        <li>Not have any disqualifying criminal history</li>
+                        <li>Pass medical examinations</li>
+                    </ul>
+                    <p>There are no age, education, language, or business experience requirements.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long does the EB-5 process take?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The complete EB-5 process typically takes 4-6 years from initial investment to permanent green card:</p>
+                    <ul>
+                        <li><strong>I-526E Petition:</strong> 24-36 months for USCIS processing</li>
+                        <li><strong>Consular Processing/AOS:</strong> 6-12 months</li>
+                        <li><strong>Conditional Green Card:</strong> Valid for 2 years</li>
+                        <li><strong>I-829 Petition:</strong> 18-24 months to remove conditions</li>
+                    </ul>
+                    <p>Processing times vary based on USCIS workload and country-specific visa availability.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can my family members also get green cards?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! The EB-5 visa includes your immediate family members:</p>
+                    <ul>
+                        <li><strong>Spouse:</strong> Your legally married spouse receives a green card and can work anywhere in the US</li>
+                        <li><strong>Children:</strong> Unmarried children under 21 years old at the time of I-526E filing receive green cards and can attend US schools without international student restrictions</li>
+                    </ul>
+                    <p><strong>Important:</strong> Children must be under 21 when the I-526E petition is filed to be included. Age-out protection may apply in certain circumstances.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment & Financial Questions -->
+        <div class="faq-category">
+            <h2 class="category-title"><i class="fas fa-dollar-sign"></i> Investment & Financial</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is "source of funds" and why is it important?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Source of funds documentation proves that your investment capital was obtained through lawful means. USCIS requires comprehensive evidence showing:</p>
+                    <ul>
+                        <li>How you earned or acquired the investment funds</li>
+                        <li>Tax compliance on income used for investment</li>
+                        <li>Legal transfer of funds from source country to US</li>
+                        <li>Complete paper trail of fund movement</li>
+                    </ul>
+                    <p>Acceptable sources include: business income, salary, property sales, inheritance, gifts, loans (with proper documentation), and investment returns.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Will I get my investment back?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>EB-5 investments are "at-risk" capital, meaning there is no guarantee of return. However:</p>
+                    <ul>
+                        <li>Most regional center projects are structured to return capital after 5-7 years</li>
+                        <li>Historical return rates vary by project type and market conditions</li>
+                        <li>Your investment must remain "at risk" throughout the conditional green card period</li>
+                        <li>Some projects offer preferred returns or interest payments</li>
+                    </ul>
+                    <p><strong>Important:</strong> Focus on immigration goals first, investment returns second. Choose projects with strong job creation models and reputable developers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What are the total costs beyond the investment amount?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>In addition to the $800,000 or $1,050,000 investment, expect these costs:</p>
+                    <ul>
+                        <li><strong>USCIS Filing Fees:</strong> $11,160 (I-526E) + $3,835 (I-829)</li>
+                        <li><strong>Immigration Attorney Fees:</strong> $15,000 - $30,000</li>
+                        <li><strong>Regional Center Admin Fee:</strong> $50,000 - $80,000</li>
+                        <li><strong>Consulting Fees:</strong> Varies by service package</li>
+                        <li><strong>Document Translation/Notarization:</strong> $2,000 - $5,000</li>
+                        <li><strong>Medical Exams:</strong> $500 - $1,000 per person</li>
+                    </ul>
+                    <p><strong>Total Additional Costs:</strong> Approximately $80,000 - $130,000 beyond the investment amount.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I use borrowed funds for my EB-5 investment?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can use borrowed funds, but you must demonstrate:</p>
+                    <ul>
+                        <li>The loan is secured by your own assets (not the EB-5 project)</li>
+                        <li>You are personally liable for repayment</li>
+                        <li>The collateral was acquired through lawful means</li>
+                        <li>Complete documentation of the loan agreement</li>
+                    </ul>
+                    <p>The source of funds used to acquire the collateral must also be documented.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Regional Center Questions -->
+        <div class="faq-category">
+            <h2 class="category-title"><i class="fas fa-building"></i> Regional Centers & Projects</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is a regional center?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>A regional center is a USCIS-designated entity that sponsors EB-5 investment projects. Benefits include:</p>
+                    <ul>
+                        <li><strong>Indirect Job Creation:</strong> Can count indirect and induced jobs, not just direct employment</li>
+                        <li><strong>No Management Required:</strong> Investors are passive; no day-to-day involvement needed</li>
+                        <li><strong>Diversified Projects:</strong> Access to large-scale commercial developments</li>
+                        <li><strong>Professional Management:</strong> Experienced teams handle project execution</li>
+                    </ul>
+                    <p>Over 90% of EB-5 investors choose regional center projects for these advantages.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I choose a regional center project?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We help you evaluate projects based on:</p>
+                    <ul>
+                        <li><strong>Developer Track Record:</strong> History of completed projects and EB-5 approvals</li>
+                        <li><strong>Job Creation Model:</strong> Conservative projections with safety margin</li>
+                        <li><strong>Capital Stack:</strong> Healthy mix of EB-5 and senior debt</li>
+                        <li><strong>Project Stage:</strong> Preference for shovel-ready or under-construction projects</li>
+                        <li><strong>Exit Strategy:</strong> Clear plan for capital return</li>
+                        <li><strong>Regional Center Reputation:</strong> USCIS approval history and compliance record</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What types of projects are available?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Common EB-5 project types include:</p>
+                    <ul>
+                        <li><strong>Real Estate:</strong> Hotels, mixed-use developments, residential projects</li>
+                        <li><strong>Infrastructure:</strong> Transportation, energy, public works</li>
+                        <li><strong>Healthcare:</strong> Hospitals, senior living, medical facilities</li>
+                        <li><strong>Manufacturing:</strong> Production facilities, industrial parks</li>
+                        <li><strong>Technology:</strong> Data centers, tech campuses</li>
+                    </ul>
+                    <p>We focus on projects with strong fundamentals and proven job creation models.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process & Timeline Questions -->
+        <div class="faq-category">
+            <h2 class="category-title"><i class="fas fa-tasks"></i> Process & Timeline</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the I-526E petition?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The I-526E (Immigrant Petition by Regional Center Investor) is the first major step in the EB-5 process. It demonstrates:</p>
+                    <ul>
+                        <li>You have invested or are actively investing the required capital</li>
+                        <li>Your funds were obtained lawfully</li>
+                        <li>The investment will create at least 10 jobs</li>
+                        <li>The regional center and project are USCIS-approved</li>
+                    </ul>
+                    <p>Approval of I-526E allows you to proceed with visa processing and obtain conditional green cards.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What happens after I-526E approval?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>After I-526E approval, you have two options:</p>
+                    <ul>
+                        <li><strong>Consular Processing:</strong> If outside the US, apply for immigrant visa at US Embassy/Consulate in your home country</li>
+                        <li><strong>Adjustment of Status:</strong> If already in the US on valid status, apply to adjust to permanent resident status</li>
+                    </ul>
+                    <p>Upon approval, you and your family receive conditional green cards valid for 2 years.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the I-829 petition?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The I-829 (Petition by Investor to Remove Conditions) is filed 90 days before your conditional green card expires. It demonstrates:</p>
+                    <ul>
+                        <li>Your investment capital remained at risk throughout the conditional period</li>
+                        <li>The required 10 jobs were created or will be created</li>
+                        <li>You maintained your investment in the project</li>
+                    </ul>
+                    <p>Upon I-829 approval, you receive permanent, unrestricted green cards with no expiration conditions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I work in the US while on a conditional green card?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Conditional green card holders have the same work rights as permanent residents:</p>
+                    <ul>
+                        <li>Work for any employer in any field</li>
+                        <li>Start your own business</li>
+                        <li>Live anywhere in the United States</li>
+                        <li>Travel freely in and out of the US</li>
+                        <li>Access to Social Security benefits (after qualifying period)</li>
+                    </ul>
+                    <p>The only restriction is that you must maintain your EB-5 investment until I-829 approval.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EKA Services Questions -->
+        <div class="faq-category">
+            <h2 class="category-title"><i class="fas fa-handshake"></i> EKA Services</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What services does EKA provide?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>EKA provides comprehensive EB-5 consulting services:</p>
+                    <ul>
+                        <li>Initial eligibility assessment and consultation</li>
+                        <li>Regional center project evaluation and recommendation</li>
+                        <li>Source of funds documentation guidance</li>
+                        <li>Coordination with US immigration attorneys</li>
+                        <li>I-526E petition preparation support</li>
+                        <li>Ongoing case management and updates</li>
+                        <li>I-829 petition assistance</li>
+                        <li>Post-approval settlement support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Are you immigration attorneys?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No, EKA EB5 Consultants LLP is not a law firm. We are specialized immigration consultants who work closely with licensed US immigration attorneys. We:</p>
+                    <ul>
+                        <li>Provide consulting and guidance on the EB-5 process</li>
+                        <li>Help you prepare documentation and materials</li>
+                        <li>Coordinate with attorneys for legal filings</li>
+                        <li>Manage your case from start to finish</li>
+                    </ul>
+                    <p>All legal advice and USCIS filings are handled by qualified US immigration attorneys.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your success rate?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>EKA maintains a 98% approval rate for I-526E and I-829 petitions. This is achieved through:</p>
+                    <ul>
+                        <li>Rigorous project vetting and due diligence</li>
+                        <li>Meticulous documentation preparation</li>
+                        <li>Partnership with top US immigration attorneys</li>
+                        <li>Comprehensive source of funds analysis</li>
+                        <li>Ongoing case monitoring and management</li>
+                    </ul>
+                    <p><strong>Note:</strong> Past performance does not guarantee future results. Each case is unique.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long have you been in business?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>EKA EB5 Consultants LLP has over 10 years of experience in EB-5 immigration consulting. Our partners, Nikhil and Vibhuti Adesara, have:</p>
+                    <ul>
+                        <li>Guided 150+ families through the EB-5 process</li>
+                        <li>Processed over 7500 crores in qualified investments</li>
+                        <li>Maintained strong relationships with top regional centers</li>
+                        <li>Member of IIUSA (Invest in the USA)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer a free consultation?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We offer a complimentary 30-minute initial consultation to:</p>
+                    <ul>
+                        <li>Assess your eligibility for EB-5</li>
+                        <li>Discuss your immigration goals</li>
+                        <li>Review preliminary source of funds</li>
+                        <li>Explain our services and process</li>
+                        <li>Answer your questions</li>
+                    </ul>
+                    <p>Schedule your free consultation today by contacting us at +91-7979007970 or info@ekaeb5visa.com</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+            <h2>Still Have Questions?</h2>
+            <p>Our EB-5 experts are here to help. Schedule a free consultation to discuss your specific situation.</p>
+            <a href="index.html#contact" class="btn">
+                <i class="fas fa-calendar"></i> Schedule Free Consultation
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
