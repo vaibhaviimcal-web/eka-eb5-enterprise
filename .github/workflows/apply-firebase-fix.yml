@@ -1,0 +1,39 @@
+name: Apply Firebase Integration Fix
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  apply-fix:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Backup index.html
+        run: cp index.html index.html.backup
+        
+      - name: Add Firebase SDK to head section
+        run: |
+          # Add Firebase scripts after line 18 (after Calendly CSS)
+          sed -i '18 a\    \n    <!-- Firebase SDK -->\n    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"><\/script>\n    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"><\/script>\n    <script src="firebase-init.js"><\/script>\n    <script src="firebase-config.js"><\/script>' index.html
+          
+      - name: Add contact form script before closing body tag
+        run: |
+          # Add contact form script before </body>
+          sed -i 's|</body>|    <!-- Contact Form Firebase Integration -->\n    <script src="contact-form-firebase.js"><\/script>\n</body>|' index.html
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html
+          git commit -m "🚀 Add Firebase integration to contact form (automated fix)"
+          git push
+          
+      - name: Success message
+        run: |
+          echo "✅ Firebase integration applied successfully!"
+          echo "🎉 Contact form will now save to Firebase!"
+          echo "📝 Check the website in 1-2 minutes after GitHub Pages deploys"
