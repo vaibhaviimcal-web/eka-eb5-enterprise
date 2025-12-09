@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - EKA EB5</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #2d4a47;
+            --accent-teal: #5a8a87;
+            --text-primary: #2d4a47;
+            --text-secondary: #6B7280;
+            --bg-secondary: #f5f0e8;
+            --border-color: #e8e0d5;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafb;
+            color: var(--text-primary);
+        }
+
+        .admin-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-header p {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 1.5rem 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background: rgba(255,255,255,0.1);
+            opacity: 1;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+
+        .btn-logout {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .content-header {
+            margin-bottom: 2rem;
+        }
+
+        .content-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-header p {
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .stat-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-teal);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Forms */
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input, .form-textarea, .form-select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
+
+        .form-textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table tr:hover {
+            background: #f9fafb;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>EKA EB5</h2>
+                <p>Admin Panel</p>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><a href="#" class="menu-link active" data-section="dashboard">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="blog">
+                    <i class="fas fa-blog"></i> Blog Posts
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="contacts">
+                    <i class="fas fa-envelope"></i> Contact Forms
+                </a></li>
+                <li><a href="#" class="menu-link" data-section="newsletter">
+                    <i class="fas fa-paper-plane"></i> Newsletter
+                </a></li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="content-header">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's your website overview.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-icon" style="background: #3b82f6;">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="totalPosts">0</div>
+                        <div class="stat-label">Total Blog Posts</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-icon" style="background: #10b981;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="totalContacts">0</div>
+                        <div class="stat-label">Contact Submissions</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-icon" style="background: #f59e0b;">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="totalSubscribers">0</div>
+                        <div class="stat-label">Newsletter Subscribers</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-icon" style="background: #8b5cf6;">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="totalViews">0</div>
+                        <div class="stat-label">Total Blog Views</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Posts Section -->
+            <section id="blog" class="section">
+                <div class="section-header">
+                    <h2>Blog Posts</h2>
+                    <button class="btn btn-primary" onclick="showNewPostForm()">
+                        <i class="fas fa-plus"></i> New Post
+                    </button>
+                </div>
+
+                <div id="newPostForm" style="display: none; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Create New Blog Post</h3>
+                    <form id="blogPostForm" class="form-grid">
+                        <div class="form-group">
+                            <label>Title *</label>
+                            <input type="text" id="postTitle" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="postCategory" class="form-select" required>
+                                <option value="EB-5 News">EB-5 News</option>
+                                <option value="Investment">Investment</option>
+                                <option value="Success Stories">Success Stories</option>
+                                <option value="Immigration">Immigration</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Author *</label>
+                            <input type="text" id="postAuthor" class="form-input" value="Nikhil Adesara" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="url" id="postImage" class="form-input" placeholder="https://...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Excerpt (Short Description)</label>
+                            <input type="text" id="postExcerpt" class="form-input" placeholder="Brief summary...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Content *</label>
+                            <textarea id="postContent" class="form-textarea" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tags (comma-separated)</label>
+                            <input type="text" id="postTags" class="form-input" placeholder="visa, investment, eb5">
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="postPublished" checked>
+                            <label for="postPublished">Publish immediately</label>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Save Post
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="hideNewPostForm()">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="blogPostsList"></div>
+            </section>
+
+            <!-- Contact Forms Section -->
+            <section id="contacts" class="section">
+                <div class="section-header">
+                    <h2>Contact Form Submissions</h2>
+                </div>
+                <div id="contactsList"></div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section id="newsletter" class="section">
+                <div class="section-header">
+                    <h2>Newsletter Subscribers</h2>
+                </div>
+                <div id="subscribersList"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <script>
+        // Initialize Firebase
+        initializeFirebase();
+
+        // Check authentication
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = 'admin-login.html';
+            } else {
+                loadDashboardData();
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await FirebaseAuth.signOut();
+            window.location.href = 'admin-login.html';
+        });
+
+        // Menu navigation
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = link.dataset.section;
+                
+                // Update active menu
+                document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show section
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                document.getElementById(section).classList.add('active');
+                
+                // Load section data
+                if (section === 'blog') loadBlogPosts();
+                if (section === 'contacts') loadContacts();
+                if (section === 'newsletter') loadSubscribers();
+            });
+        });
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            const posts = await FirebaseDB.getBlogPosts(1000, false);
+            const contacts = await FirebaseDB.getContactSubmissions(1000);
+            const subscribers = await FirebaseDB.getNewsletterSubscribers();
+
+            document.getElementById('totalPosts').textContent = posts.success ? posts.posts.length : 0;
+            document.getElementById('totalContacts').textContent = contacts.success ? contacts.submissions.length : 0;
+            document.getElementById('totalSubscribers').textContent = subscribers.success ? subscribers.subscribers.length : 0;
+            
+            const totalViews = posts.success ? posts.posts.reduce((sum, post) => sum + (post.views || 0), 0) : 0;
+            document.getElementById('totalViews').textContent = totalViews;
+        }
+
+        // Blog post form
+        function showNewPostForm() {
+            document.getElementById('newPostForm').style.display = 'block';
+        }
+
+        function hideNewPostForm() {
+            document.getElementById('newPostForm').style.display = 'none';
+            document.getElementById('blogPostForm').reset();
+        }
+
+        document.getElementById('blogPostForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const postData = {
+                title: document.getElementById('postTitle').value,
+                category: document.getElementById('postCategory').value,
+                author: document.getElementById('postAuthor').value,
+                imageUrl: document.getElementById('postImage').value,
+                excerpt: document.getElementById('postExcerpt').value,
+                content: document.getElementById('postContent').value,
+                tags: document.getElementById('postTags').value.split(',').map(t => t.trim()).filter(t => t),
+                published: document.getElementById('postPublished').checked
+            };
+
+            const result = await FirebaseDB.createBlogPost(postData);
+            
+            if (result.success) {
+                alert('Blog post created successfully!');
+                hideNewPostForm();
+                loadBlogPosts();
+                loadDashboardData();
+            } else {
+                alert('Error creating post: ' + result.error);
+            }
+        });
+
+        // Load blog posts
+        async function loadBlogPosts() {
+            const container = document.getElementById('blogPostsList');
+            container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+            
+            const result = await FirebaseDB.getBlogPosts(100, false);
+            
+            if (result.success && result.posts.length > 0) {
+                container.innerHTML = `
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Author</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${result.posts.map(post => `
+                                <tr>
+                                    <td><strong>${post.title}</strong></td>
+                                    <td>${post.category}</td>
+                                    <td>${post.author}</td>
+                                    <td><span class="badge ${post.published ? 'badge-success' : 'badge-warning'}">${post.published ? 'Published' : 'Draft'}</span></td>
+                                    <td>${post.views || 0}</td>
+                                    <td class="action-buttons">
+                                        <button class="btn btn-sm btn-danger" onclick="deletePost('${post.id}')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                container.innerHTML = '<p>No blog posts yet.</p>';
+            }
+        }
+
+        async function deletePost(postId) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                await FirebaseDB.deleteBlogPost(postId);
+                loadBlogPosts();
+                loadDashboardData();
+            }
+        }
+
+        // Load contacts
+        async function loadContacts() {
+            const container = document.getElementById('contactsList');
+            container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+            
+            const result = await FirebaseDB.getContactSubmissions(100);
+            
+            if (result.success && result.submissions.length > 0) {
+                container.innerHTML = `
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${result.submissions.map(sub => `
+                                <tr>
+                                    <td><strong>${sub.name}</strong></td>
+                                    <td>${sub.email}</td>
+                                    <td>${sub.phone || 'N/A'}</td>
+                                    <td>${sub.message.substring(0, 50)}...</td>
+                                    <td>${sub.submittedAt ? new Date(sub.submittedAt.toDate()).toLocaleDateString() : 'Recent'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                container.innerHTML = '<p>No contact submissions yet.</p>';
+            }
+        }
+
+        // Load subscribers
+        async function loadSubscribers() {
+            const container = document.getElementById('subscribersList');
+            container.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+            
+            const result = await FirebaseDB.getNewsletterSubscribers();
+            
+            if (result.success && result.subscribers.length > 0) {
+                container.innerHTML = `
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Subscribed Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${result.subscribers.map(sub => `
+                                <tr>
+                                    <td><strong>${sub.email}</strong></td>
+                                    <td>${sub.name || 'N/A'}</td>
+                                    <td>${sub.subscribedAt ? new Date(sub.subscribedAt.toDate()).toLocaleDateString() : 'Recent'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                container.innerHTML = '<p>No newsletter subscribers yet.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
