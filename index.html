@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EKA EB5 Consultants LLP - Your Trusted Partner for US EB-5 Investment Visa Success</title>
-    <meta name="description" content="India's premier EB-5 visa consultancy with AI-powered guidance, real-time tracking, and enterprise-grade immigration solutions.">
+    <meta name="description" content="India's premier EB-5 visa consultancy with 98% approval rate, 150+ families served, and 1500 Cr+ investments processed. Expert guidance from consultation to green card.">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -325,10 +325,9 @@
             color: var(--accent-teal);
         }
 
-        /* ===== FEATURES SECTION ===== */
-        .features {
+        /* ===== SECTION STYLES ===== */
+        .section {
             padding: 6rem 2rem;
-            background: white;
         }
 
         .section-header {
@@ -349,6 +348,7 @@
             color: var(--text-secondary);
         }
 
+        /* ===== FEATURES GRID ===== */
         .features-grid {
             max-width: 1400px;
             margin: 0 auto;
@@ -389,6 +389,7 @@
         .feature-card:nth-child(4) .feature-icon { background: var(--gradient-4); }
         .feature-card:nth-child(5) .feature-icon { background: var(--gradient-1); }
         .feature-card:nth-child(6) .feature-icon { background: var(--gradient-2); }
+        .feature-card:nth-child(7) .feature-icon { background: var(--gradient-3); }
 
         .feature-card h3 {
             font-size: 1.5rem;
@@ -397,138 +398,84 @@
             color: var(--primary-color);
         }
 
-        .feature-card p {
+        .feature-card p, .feature-card ul {
             color: var(--text-secondary);
             line-height: 1.7;
         }
 
-        /* ===== TECH STACK SECTION ===== */
-        .tech-stack {
-            padding: 6rem 2rem;
-            background: var(--primary-color);
-            color: white;
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
         }
 
-        .tech-grid {
-            max-width: 1400px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .feature-card ul li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
         }
 
-        .tech-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .tech-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .tech-item i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .tech-item h4 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-item p {
-            font-size: 0.9rem;
-            opacity: 0.8;
+        .feature-card ul li::before {
+            content: "•";
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         /* ===== PROCESS TIMELINE ===== */
-        .process {
-            padding: 6rem 2rem;
-            background: var(--bg-secondary);
-        }
-
-        .timeline {
-            max-width: 1000px;
+        .process-grid {
+            max-width: 1200px;
             margin: 3rem auto 0;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border-color);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            position: relative;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            grid-column: 2;
-        }
-
-        .timeline-item:nth-child(even) .timeline-number {
-            left: auto;
-            right: -35px;
-        }
-
-        .timeline-content {
+        .process-step {
             background: white;
             padding: 2rem;
             border-radius: 12px;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
+            position: relative;
         }
 
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: var(--text-secondary);
-        }
-
-        .timeline-number {
+        .process-step::before {
+            content: attr(data-step);
             position: absolute;
-            left: -35px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 70px;
-            height: 70px;
+            top: -15px;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
             background: var(--accent-teal);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             font-weight: 800;
-            box-shadow: var(--shadow-lg);
+            font-size: 1.2rem;
+        }
+
+        .process-step h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .process-duration {
+            color: var(--accent-teal);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* ===== PARTNERS SECTION ===== */
-        .partners {
-            padding: 6rem 2rem;
-            background: white;
-        }
-
         .partners-grid {
             max-width: 1200px;
             margin: 3rem auto 0;
@@ -605,52 +552,92 @@
             color: var(--accent-teal);
         }
 
-        /* ===== CLIENT PORTAL PREVIEW ===== */
-        .portal-preview {
-            padding: 6rem 2rem;
-            background: var(--gradient-3);
-            color: white;
-        }
-
-        .portal-container {
-            max-width: 1400px;
+        /* ===== STATS SECTION ===== */
+        .stats-grid {
+            max-width: 1200px;
             margin: 3rem auto 0;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .portal-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
-        .portal-feature {
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
             text-align: center;
-            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
         }
 
-        .portal-feature i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .portal-feature h4 {
-            font-size: 1.25rem;
+        .stat-card .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent-teal);
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            padding: 6rem 2rem;
-            background: var(--bg-secondary);
+        .stat-card .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
+        .stat-card .stat-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 5rem;
+            color: var(--accent-teal);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .testimonial-location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
         .contact-container {
             max-width: 1200px;
             margin: 3rem auto 0;
@@ -762,13 +749,6 @@
             display: block;
         }
 
-        .form-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-
         /* ===== FOOTER ===== */
         .footer {
             background: var(--primary-color);
@@ -827,7 +807,7 @@
             opacity: 0.8;
         }
 
-        /* ===== FLOATING ELEMENTS ===== */
+        /* ===== FLOATING CHAT ===== */
         .floating-chat {
             position: fixed;
             bottom: 2rem;
@@ -992,24 +972,6 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                padding-left: 80px;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content {
-                grid-column: 1;
-            }
-
-            .timeline-number {
-                left: 0 !important;
-                right: auto !important;
-            }
-
             .chatbot-modal {
                 width: 90%;
                 right: 5%;
@@ -1034,7 +996,8 @@
             }
 
             .features-grid,
-            .partners-grid {
+            .partners-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1091,18 +1054,15 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#eb5-program">EB-5 Program</a></li>
                     <li><a href="#process">Process</a></li>
+                    <li><a href="#investments">Investments</a></li>
                     <li><a href="#partners">Partners</a></li>
-                    <li><a href="#portal">Client Portal</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
 
             <div class="nav-actions">
-                <a href="#portal" class="btn btn-outline">
-                    <i class="fas fa-user"></i> Login
-                </a>
                 <a href="#contact" class="btn btn-primary">
                     <i class="fas fa-calendar"></i> Book Consultation
                 </a>
@@ -1131,16 +1091,16 @@
 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number">500+</span>
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Approval Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
                         <span class="stat-label">Families Served</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Success Rate</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Years Experience</span>
+                        <span class="stat-number">1500 Cr+</span>
+                        <span class="stat-label">Investments Processed</span>
                     </div>
                 </div>
             </div>
@@ -1150,11 +1110,11 @@
                     <h3><i class="fas fa-shield-alt"></i> Why Choose EKA?</h3>
                     <ul>
                         <li><i class="fas fa-check-circle"></i> USCIS-Approved Regional Centers</li>
-                        <li><i class="fas fa-check-circle"></i> AI-Powered Application Tracking</li>
-                        <li><i class="fas fa-check-circle"></i> 24/7 Client Portal Access</li>
-                        <li><i class="fas fa-check-circle"></i> Dedicated Immigration Attorneys</li>
+                        <li><i class="fas fa-check-circle"></i> 10+ Years Experience</li>
+                        <li><i class="fas fa-check-circle"></i> Personalized Guidance</li>
+                        <li><i class="fas fa-check-circle"></i> End-to-End Support</li>
+                        <li><i class="fas fa-check-circle"></i> Transparent Approach</li>
                         <li><i class="fas fa-check-circle"></i> Multi-Language Support</li>
-                        <li><i class="fas fa-check-circle"></i> End-to-End Concierge Service</li>
                     </ul>
                 </div>
             </div>
@@ -1162,181 +1122,261 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="features" id="about">
+    <section class="section" id="about" style="background: white;">
         <div class="section-header" data-aos="fade-up">
             <h2>About EKA EB5 Consultants</h2>
             <p>Leading EB-5 Visa Specialists in India</p>
         </div>
 
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 0 2rem;">
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem; text-align: center;">
                 EKA EB5 Consultants LLP stands as India's premier advisory firm specialising in US EB-5 investment visa programmes. With years of dedicated experience, we have successfully guided numerous Indian families towards achieving their American dream through strategic investment pathways.
             </p>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
                 Our boutique consultancy combines deep knowledge of US immigration law with personalised service, ensuring each client receives tailored guidance throughout their EB-5 journey. We pride ourselves on our transparent approach, ethical practices, and unwavering commitment to client success.
             </p>
         </div>
+
+        <div class="features-grid" style="margin-top: 4rem;">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Expert Guidance</h3>
+                <p>Comprehensive support from initial consultation through green card approval</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h3>Vetted Projects</h3>
+                <p>Only USCIS-approved regional centre projects with proven track records</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Personalised Service</h3>
+                <p>Dedicated attention to each family's unique circumstances and goals</p>
+            </div>
+        </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="features" id="services" style="background: var(--bg-secondary);">
+    <!-- EB-5 PROGRAM SECTION -->
+    <section class="section" id="eb5-program" style="background: var(--bg-secondary);">
         <div class="section-header" data-aos="fade-up">
-            <h2>Enterprise-Grade Immigration Solutions</h2>
-            <p>Cutting-edge technology meets personalized immigration expertise</p>
+            <h2>What is the EB-5 Investment Visa Programme</h2>
+            <p>Your Gateway to US Permanent Residency</p>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto 3rem; padding: 0 2rem;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
+                The EB-5 Immigrant Investor Programme provides foreign nationals and their families a direct pathway to US permanent residency (green card) through qualifying investments in American businesses. Established by Congress in 1990, this programme stimulates the US economy through job creation and capital investment from foreign sources.
+            </p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
-                <h3>AI-Powered Chatbot</h3>
-                <p>Get instant answers to your EB-5 questions 24/7 with our intelligent AI assistant trained on thousands of successful applications and USCIS guidelines.</p>
+                <h3>Investment Requirement</h3>
+                <p>Invest $800,000 USD in a Targeted Employment Area (TEA) or $1,050,000 in a standard area through an approved regional centre or direct business</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="feature-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-users"></i>
                 </div>
-                <h3>Real-Time Application Tracking</h3>
-                <p>Monitor your application status in real-time with our advanced dashboard. Receive instant notifications at every milestone of your EB-5 journey.</p>
+                <h3>Job Creation</h3>
+                <p>The investment must create or preserve at least 10 full-time jobs for qualified US workers within two years of investor admission</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="feature-icon">
-                    <i class="fas fa-file-contract"></i>
+                    <i class="fas fa-id-card"></i>
                 </div>
-                <h3>Smart Document Management</h3>
-                <p>Securely upload, organize, and track all your documents with our encrypted cloud-based system. AI-powered validation ensures completeness.</p>
+                <h3>Green Card Path</h3>
+                <p>Investors and their immediate family (spouse and unmarried children under 21) receive conditional green cards, leading to permanent residency</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="feature-icon">
-                    <i class="fas fa-video"></i>
+                    <i class="fas fa-briefcase"></i>
                 </div>
-                <h3>Video Consultation Booking</h3>
-                <p>Schedule face-to-face consultations with our experts through integrated video conferencing. Choose from flexible time slots across time zones.</p>
+                <h3>No Sponsorship Required</h3>
+                <p>Unlike employment-based visas, EB-5 requires no employer sponsorship, offering complete freedom in career and location choices</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
                 <div class="feature-icon">
-                    <i class="fas fa-globe"></i>
+                    <i class="fas fa-family"></i>
                 </div>
-                <h3>Multi-Language Platform</h3>
-                <p>Access our platform in English, Hindi, Gujarati, Marathi, and more. Our AI translates complex immigration terms accurately.</p>
+                <h3>Family Benefits</h3>
+                <p>Spouses can work anywhere in the US, and children gain access to world-class American education without international student restrictions or fees</p>
             </div>
 
             <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
                 <div class="feature-icon">
-                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-flag-usa"></i>
                 </div>
-                <h3>Bank-Grade Security</h3>
-                <p>Your sensitive information is protected with 256-bit encryption, multi-factor authentication, and SOC 2 Type II compliance.</p>
+                <h3>Path to Citizenship</h3>
+                <p>After maintaining residency for five years, EB-5 investors become eligible to apply for US citizenship</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Permanent Solution</h3>
+                <p>EB-5 provides permanent residency, not a temporary visa, offering long-term security and stability for your family's future</p>
             </div>
         </div>
     </section>
 
-    <!-- TECH STACK SECTION -->
-    <section class="tech-stack">
+    <!-- PROCESS SECTION -->
+    <section class="section" id="process" style="background: white;">
         <div class="section-header" data-aos="fade-up">
-            <h2 style="color: white;">Powered by Cutting-Edge Technology</h2>
-            <p style="color: rgba(255,255,255,0.8);">Enterprise infrastructure built for reliability, security, and scale</p>
+            <h2>Complete EB-5 Process Guide</h2>
+            <p>From Investment to Green Card Approval</p>
         </div>
 
-        <div class="tech-grid">
-            <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
-                <i class="fas fa-brain"></i>
-                <h4>AI & Machine Learning</h4>
-                <p>GPT-4 powered assistance</p>
+        <div class="process-grid">
+            <div class="process-step" data-step="1" data-aos="fade-up">
+                <h3>Initial Consultation & Evaluation</h3>
+                <div class="process-duration">Duration: 1-2 weeks</div>
+                <p>Comprehensive assessment of your financial qualifications, immigration goals, and family circumstances. We review source of funds documentation and provide preliminary project recommendations tailored to your objectives.</p>
             </div>
-            <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
-                <i class="fas fa-cloud"></i>
-                <h4>Cloud Infrastructure</h4>
-                <p>AWS & Azure redundancy</p>
+
+            <div class="process-step" data-step="2" data-aos="fade-up" data-aos-delay="100">
+                <h3>Project Selection & Due Diligence</h3>
+                <div class="process-duration">Duration: 2-4 weeks</div>
+                <p>Detailed evaluation of available regional centre projects, including business plans, job creation models, developer track records, and risk assessments. We conduct thorough due diligence to ensure project viability and compliance.</p>
             </div>
-            <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Advanced Security</h4>
-                <p>SOC 2 Type II certified</p>
+
+            <div class="process-step" data-step="3" data-aos="fade-up" data-aos-delay="200">
+                <h3>Investment & Escrow</h3>
+                <div class="process-duration">Duration: 2-3 weeks</div>
+                <p>Preparation of investment agreements and transfer of funds to USCIS-approved escrow accounts. Your capital remains protected until I-526 petition approval, ensuring security throughout the process.</p>
             </div>
-            <div class="tech-item" data-aos="zoom-in" data-aos-delay="400">
-                <i class="fas fa-mobile-alt"></i>
-                <h4>Progressive Web App</h4>
-                <p>iOS & Android compatible</p>
+
+            <div class="process-step" data-step="4" data-aos="fade-up" data-aos-delay="300">
+                <h3>I-526 Petition Filing</h3>
+                <div class="process-duration">Duration: 3-6 months preparation</div>
+                <p>Compilation of comprehensive petition package including source of funds documentation, business plans, and economic reports. Our team works with immigration attorneys to ensure complete, accurate submissions.</p>
             </div>
-            <div class="tech-item" data-aos="zoom-in" data-aos-delay="500">
-                <i class="fas fa-database"></i>
-                <h4>Blockchain Verification</h4>
-                <p>Immutable document records</p>
+
+            <div class="process-step" data-step="5" data-aos="fade-up" data-aos-delay="400">
+                <h3>I-526 Approval & Visa Processing</h3>
+                <div class="process-duration">Duration: 24-36 months</div>
+                <p>USCIS reviews and approves your petition. Upon approval, you proceed through consular processing at the US Embassy in India or adjustment of status if already in the US.</p>
             </div>
-            <div class="tech-item" data-aos="zoom-in" data-aos-delay="600">
-                <i class="fas fa-chart-bar"></i>
-                <h4>Analytics Dashboard</h4>
-                <p>Real-time insights & reports</p>
+
+            <div class="process-step" data-step="6" data-aos="fade-up" data-aos-delay="500">
+                <h3>Conditional Green Card</h3>
+                <div class="process-duration">Duration: 2 years</div>
+                <p>You and your family receive conditional green cards valid for two years. During this period, you establish US residency whilst the regional centre project continues creating requisite jobs.</p>
             </div>
+
+            <div class="process-step" data-step="7" data-aos="fade-up" data-aos-delay="600">
+                <h3>I-829 Petition & Permanent Residency</h3>
+                <div class="process-duration">Duration: 18-24 months</div>
+                <p>Within 90 days before your conditional green card expires, we file Form I-829 to remove conditions. Upon approval, you receive permanent, unrestricted green cards for your entire family.</p>
+            </div>
+        </div>
+
+        <div style="max-width: 800px; margin: 3rem auto 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; text-align: center;">
+            <p style="font-size: 1.1rem; color: var(--text-primary); font-weight: 600;">
+                <i class="fas fa-clock" style="color: var(--accent-teal); margin-right: 0.5rem;"></i>
+                Total Timeline: The complete EB-5 process typically takes 4-6 years from initial investment to permanent green card. However, processing times vary based on USCIS workload and country-specific visa availability for Indian nationals.
+            </p>
         </div>
     </section>
 
-    <!-- PROCESS TIMELINE -->
-    <section class="process" id="process">
+    <!-- INVESTMENT OPTIONS SECTION -->
+    <section class="section" id="investments" style="background: var(--bg-secondary);">
         <div class="section-header" data-aos="fade-up">
-            <h2>Your EB-5 Journey, Simplified</h2>
-            <p>A transparent, step-by-step process from consultation to green card</p>
+            <h2>Investment Options and Regional Centre Projects</h2>
+            <p>Vetted Opportunities for Indian Investors</p>
         </div>
 
-        <div class="timeline">
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-content">
-                    <h3>Initial Consultation & Assessment</h3>
-                    <p>Free 30-minute consultation to evaluate your eligibility, discuss investment options, and create a personalized roadmap. Our AI assessment tool provides instant preliminary results.</p>
+        <div style="max-width: 1200px; margin: 0 auto 3rem; padding: 0 2rem;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
+                EKA EB5 Consultants exclusively recommends USCIS-approved regional centre projects that have undergone rigorous due diligence. We focus on projects with strong developer track records, conservative job creation models, and transparent capital structures to maximise your chances of success.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-building"></i>
                 </div>
-                <div class="timeline-number">1</div>
+                <h3>Real Estate Development</h3>
+                <p>Mixed-use developments, residential projects, and hospitality ventures in high-growth metropolitan areas across the United States.</p>
+                <ul>
+                    <li>Proven asset class with tangible collateral</li>
+                    <li>Strong job creation multipliers</li>
+                    <li>Potential for capital appreciation</li>
+                </ul>
             </div>
 
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-content">
-                    <h3>Project Selection & Due Diligence</h3>
-                    <p>Access our curated portfolio of USCIS-approved regional center projects. Our team conducts comprehensive due diligence and provides detailed risk analysis reports.</p>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-road"></i>
                 </div>
-                <div class="timeline-number">2</div>
+                <h3>Infrastructure Projects</h3>
+                <p>Transportation, energy, and public works projects that serve critical community needs whilst generating substantial employment.</p>
+                <ul>
+                    <li>Government-backed initiatives</li>
+                    <li>Long-term economic impact</li>
+                    <li>Lower commercial risk profile</li>
+                </ul>
             </div>
 
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-content">
-                    <h3>Source of Funds Documentation</h3>
-                    <p>Our experts guide you through gathering and organizing all required financial documentation. AI-powered validation ensures completeness before submission.</p>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-hospital"></i>
                 </div>
-                <div class="timeline-number">3</div>
+                <h3>Healthcare Facilities</h3>
+                <p>Medical centres, senior living communities, and specialised care facilities addressing America's growing healthcare infrastructure needs.</p>
+                <ul>
+                    <li>Recession-resistant sector</li>
+                    <li>Essential services demand</li>
+                    <li>Strong institutional backing</li>
+                </ul>
             </div>
+        </div>
 
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-content">
-                    <h3>I-526E Petition Filing</h3>
-                    <p>Meticulous preparation and filing of your I-526E petition with USCIS. Track every stage through our real-time dashboard with estimated processing timelines.</p>
+        <div style="max-width: 1200px; margin: 4rem auto 0;">
+            <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 2rem; font-size: 2rem;">Our Due Diligence Process</h3>
+            <div class="process-grid">
+                <div class="process-step" data-step="1" data-aos="fade-up">
+                    <h3>Developer Background Verification</h3>
+                    <p>Comprehensive review of developer history, financial strength, previous project completions, and reputation within the industry.</p>
                 </div>
-                <div class="timeline-number">4</div>
-            </div>
 
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-content">
-                    <h3>Conditional Green Card</h3>
-                    <p>Upon I-526E approval, receive your conditional green card and begin your life in the United States. We provide relocation support and settlement services.</p>
+                <div class="process-step" data-step="2" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Business Plan Analysis</h3>
+                    <p>Detailed examination of project economics, capital stack structure, job creation methodology, and realistic completion timelines.</p>
                 </div>
-                <div class="timeline-number">5</div>
-            </div>
 
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-content">
-                    <h3>I-829 & Permanent Residency</h3>
-                    <p>After 2 years, we assist with I-829 petition to remove conditions and obtain permanent green card status. Continued support until citizenship eligibility.</p>
+                <div class="process-step" data-step="3" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Legal Compliance Review</h3>
+                    <p>Verification of USCIS regional centre approval, securities compliance, escrow arrangements, and investor protection mechanisms.</p>
                 </div>
-                <div class="timeline-number">6</div>
+
+                <div class="process-step" data-step="4" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Independent Economic Analysis</h3>
+                    <p>Third-party validation of job creation projections using USCIS-approved economic methodologies and conservative assumptions.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- PARTNERS SECTION -->
-    <section class="partners" id="partners">
+    <section class="section" id="partners" style="background: white;">
         <div class="section-header" data-aos="fade-up">
             <h2>Meet Our Partners</h2>
             <p>Nikhil Adesara and Vibhuti Dhand Adesara's Expertise</p>
@@ -1351,7 +1391,7 @@
                         <h4>Managing Partner</h4>
                     </div>
                 </div>
-                <p>Nikhil brings extensive expertise in international investment immigration, having guided over 100 families through the EB-5 process. His deep understanding of USCIS requirements and regional centre operations ensures clients receive accurate, up-to-date guidance.</p>
+                <p>Nikhil brings extensive expertise in international investment immigration, having guided over 100 families through the EB-5 process. His deep understanding of USCIS requirements and regional centre operations ensures clients receive accurate, up-to-date guidance. With a background in finance and immigration law, Nikhil excels at structuring investments that meet both regulatory requirements and family objectives.</p>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> EB-5 immigration specialist with 10+ years experience</li>
                     <li><i class="fas fa-check-circle"></i> Expert in regional centre project evaluation</li>
@@ -1367,7 +1407,7 @@
                         <h4>Partner</h4>
                     </div>
                 </div>
-                <p>Vibhuti specialises in client relationship management and documentation processes, ensuring seamless application preparation and submission. Her meticulous attention to detail helps families navigate the complexities of EB-5 petitions with confidence.</p>
+                <p>Vibhuti specialises in client relationship management and documentation processes, ensuring seamless application preparation and submission. Her meticulous attention to detail and compassionate approach help families navigate the complexities of EB-5 petitions with confidence. She coordinates closely with immigration attorneys and regional centres to expedite processing whilst maintaining compliance.</p>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Immigration documentation specialist</li>
                     <li><i class="fas fa-check-circle"></i> Client services and relationship management expert</li>
@@ -1375,59 +1415,113 @@
                 </ul>
             </div>
         </div>
+
+        <div style="max-width: 800px; margin: 3rem auto 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; text-align: center;">
+            <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">
+                Combined, Nikhil and Vibhuti have successfully processed EB-5 applications representing over 7500 crores in qualified investments, with a 98% approval rate.
+            </p>
+        </div>
     </section>
 
-    <!-- CLIENT PORTAL PREVIEW -->
-    <section class="portal-preview" id="portal">
+    <!-- STATS SECTION -->
+    <section class="section" style="background: var(--primary-color); color: white;">
         <div class="section-header" data-aos="fade-up">
-            <h2 style="color: white;">Advanced Client Portal</h2>
-            <p style="color: rgba(255,255,255,0.9);">Manage your entire EB-5 journey from one powerful dashboard</p>
+            <h2 style="color: white;">Why Choose EKA EB5 Consultants</h2>
+            <p style="color: rgba(255,255,255,0.8);">Our Track Record and Client Success Stories</p>
         </div>
 
-        <div class="portal-container" data-aos="zoom-in">
-            <div class="portal-features">
-                <div class="portal-feature">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h4>Live Dashboard</h4>
-                    <p>Real-time application status</p>
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                <span class="stat-number">98%</span>
+                <div class="stat-label">Approval Rate</div>
+                <div class="stat-description">Industry-leading success rate for I-526 and I-829 petitions</div>
+            </div>
+
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                <span class="stat-number">150+</span>
+                <div class="stat-label">Families Served</div>
+                <div class="stat-description">Indian families successfully guided through EB-5 process</div>
+            </div>
+
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                <span class="stat-number">1500 Cr+</span>
+                <div class="stat-label">Investment Processed</div>
+                <div class="stat-description">Total qualified investments facilitated since inception</div>
+            </div>
+
+            <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                <span class="stat-number">10+</span>
+                <div class="stat-label">Years Experience</div>
+                <div class="stat-description">Dedicated expertise in EB-5 immigration consulting</div>
+            </div>
+        </div>
+
+        <div style="max-width: 1200px; margin: 4rem auto 0;">
+            <h3 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2rem;">What Sets Us Apart</h3>
+            <div class="features-grid">
+                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up">
+                    <div class="feature-icon" style="background: var(--secondary-color);">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 style="color: white;">Personalised Approach</h3>
+                    <p style="color: rgba(255,255,255,0.8);">We limit our client roster to ensure each family receives dedicated attention and customised guidance throughout their journey. Your success is our priority, not volume processing.</p>
                 </div>
-                <div class="portal-feature">
-                    <i class="fas fa-folder-open"></i>
-                    <h4>Document Vault</h4>
-                    <p>Secure cloud storage</p>
+
+                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon" style="background: var(--secondary-color);">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 style="color: white;">Strategic Partnerships</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Strong relationships with top US immigration attorneys, regional centres, and fund administrators streamline your application process and provide insider insights.</p>
                 </div>
-                <div class="portal-feature">
-                    <i class="fas fa-comments"></i>
-                    <h4>Direct Messaging</h4>
-                    <p>Chat with your advisor</p>
+
+                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon" style="background: var(--secondary-color);">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3 style="color: white;">Rigorous Project Vetting</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Our independent due diligence process goes beyond basic compliance checks. We recommend only projects we would invest in ourselves, ensuring quality and integrity.</p>
                 </div>
-                <div class="portal-feature">
-                    <i class="fas fa-bell"></i>
-                    <h4>Smart Alerts</h4>
-                    <p>Never miss a deadline</p>
-                </div>
-                <div class="portal-feature">
-                    <i class="fas fa-credit-card"></i>
-                    <h4>Payment Gateway</h4>
-                    <p>Secure online payments</p>
-                </div>
-                <div class="portal-feature">
-                    <i class="fas fa-file-download"></i>
-                    <h4>Report Generation</h4>
-                    <p>Download detailed reports</p>
+
+                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon" style="background: var(--secondary-color);">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h3 style="color: white;">End-to-End Support</h3>
+                    <p style="color: rgba(255,255,255,0.8);">From initial consultation through permanent green card receipt, we remain your trusted advisers, providing continuous support and guidance at every stage.</p>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="#" class="btn btn-primary" style="background: white; color: var(--primary-color);" onclick="alert('Client Portal Login - Coming Soon! Full authentication system will be integrated.'); return false;">
-                    <i class="fas fa-sign-in-alt"></i> Access Client Portal
-                </a>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Client Success Stories</h2>
+            <p>Hear from families who achieved their American dream with EKA</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up">
+                <div class="testimonial-text">
+                    "EKA EB5 Consultants made our American dream a reality. Nikhil and Vibhuti's expertise, patience, and attention to detail gave us complete confidence throughout the process. Today, our children are thriving in US schools, and we couldn't be more grateful for their guidance."
+                </div>
+                <div class="testimonial-author">Rajesh and Priya M.</div>
+                <div class="testimonial-location">Mumbai</div>
+            </div>
+
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-text">
+                    "The transparency and professionalism EKA demonstrated was exceptional. They carefully explained every step, helped us understand complex requirements, and connected us with a solid regional centre project. Our I-526 was approved in record time thanks to their meticulous preparation."
+                </div>
+                <div class="testimonial-author">Arun K.</div>
+                <div class="testimonial-location">Bangalore</div>
             </div>
         </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section class="contact" id="contact">
+    <section class="section" id="contact" style="background: white;">
         <div class="section-header" data-aos="fade-up">
             <h2>Contact EKA EB5 Consultants</h2>
             <p>Schedule Your Consultation Today</p>
@@ -1516,7 +1610,7 @@
         <div class="footer-container">
             <div class="footer-about">
                 <h3>EKA EB5 Consultants LLP</h3>
-                <p>Your trusted partner for US EB-5 investment visa success. We combine cutting-edge technology with personalized expertise to guide you through every step of your American dream.</p>
+                <p>Your trusted partner for US EB-5 investment visa success. We combine cutting-edge expertise with personalized service to guide you through every step of your American dream.</p>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
                     <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
                     <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
@@ -1529,8 +1623,9 @@
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#eb5-program">EB-5 Program</a></li>
                     <li><a href="#process">Process</a></li>
+                    <li><a href="#investments">Investments</a></li>
                     <li><a href="#partners">Our Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1659,7 +1754,7 @@
             } else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('investment')) {
                 return "The EB-5 program requires a minimum investment of $800,000 for projects in Targeted Employment Areas (TEA) or $1,050,000 for standard projects. Would you like to know more about our vetted projects?";
             } else if (lowerMessage.includes('time') || lowerMessage.includes('how long')) {
-                return "The EB-5 process typically takes 24-36 months from initial filing to conditional green card approval. Processing times vary based on USCIS workload and your country of origin.";
+                return "The EB-5 process typically takes 4-6 years from initial investment to permanent green card. Processing times vary based on USCIS workload and country-specific visa availability.";
             } else if (lowerMessage.includes('eligible') || lowerMessage.includes('qualify')) {
                 return "To qualify for EB-5, you need: 1) Lawful source of investment funds, 2) Minimum investment amount, 3) Investment in a USCIS-approved project that creates 10 jobs. Would you like a free eligibility assessment?";
             } else if (lowerMessage.includes('green card')) {
