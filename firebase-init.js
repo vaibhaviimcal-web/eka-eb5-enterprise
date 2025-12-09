@@ -6,7 +6,7 @@
     
     // Correct Firebase Configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyAMiBOT5fNsEcmDed4-wmNiXx9EvAn9R7w",
+        apiKey: "AIzaSyAMiB0T5fNsEcmDed4-wmNiXx9EvAn9R7w",
         authDomain: "eka-eb5-website.firebaseapp.com",
         projectId: "eka-eb5-website",
         storageBucket: "eka-eb5-website.firebasestorage.app",
