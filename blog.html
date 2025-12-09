@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - EKA EB5 Consultants | EB-5 Visa Insights & Updates</title>
+    <meta name="description" content="Stay updated with the latest EB-5 visa news, investment insights, and immigration updates from India's premier EB-5 consultancy.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #2d4a47;
+            --secondary-color: #c4a484;
+            --accent-teal: #5a8a87;
+            --text-primary: #2d4a47;
+            --text-secondary: #6B7280;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #f5f0e8;
+            --border-color: #e8e0d5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-teal);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d5 100%);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .blog-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent-teal);
+            background: var(--accent-teal);
+            color: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: var(--bg-secondary);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-category {
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .read-more {
+            color: var(--accent-teal);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .no-posts {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            border-color: var(--accent-teal);
+            background: var(--accent-teal);
+            color: white;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">EKA EB5</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>EB-5 Insights & Updates</h1>
+        <p>Expert analysis, success stories, and the latest news on EB-5 visa investments</p>
+    </section>
+
+    <!-- Blog Container -->
+    <div class="blog-container">
+        <!-- Filters -->
+        <div class="blog-filters">
+            <button class="filter-btn active" data-category="all">All Posts</button>
+            <button class="filter-btn" data-category="EB-5 News">EB-5 News</button>
+            <button class="filter-btn" data-category="Investment">Investment</button>
+            <button class="filter-btn" data-category="Success Stories">Success Stories</button>
+            <button class="filter-btn" data-category="Immigration">Immigration</button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner fa-spin"></i> Loading blog posts...
+        </div>
+
+        <!-- Blog Grid -->
+        <div id="blogGrid" class="blog-grid" style="display: none;"></div>
+
+        <!-- No Posts Message -->
+        <div id="noPosts" class="no-posts" style="display: none;">
+            <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+            <p>No blog posts found. Check back soon!</p>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="pagination" style="display: none;"></div>
+    </div>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <script>
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentCategory = 'all';
+        const postsPerPage = 9;
+        let currentPage = 1;
+
+        // Initialize Firebase and load posts
+        document.addEventListener('DOMContentLoaded', async () => {
+            initializeFirebase();
+            await loadBlogPosts();
+            setupFilters();
+        });
+
+        async function loadBlogPosts() {
+            try {
+                const result = await FirebaseDB.getBlogPosts(100, true);
+                
+                if (result.success) {
+                    allPosts = result.posts;
+                    filteredPosts = allPosts;
+                    displayPosts();
+                } else {
+                    showNoPosts();
+                }
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                showNoPosts();
+            }
+        }
+
+        function displayPosts() {
+            const loading = document.getElementById('loading');
+            const blogGrid = document.getElementById('blogGrid');
+            const noPosts = document.getElementById('noPosts');
+            const pagination = document.getElementById('pagination');
+
+            loading.style.display = 'none';
+
+            if (filteredPosts.length === 0) {
+                showNoPosts();
+                return;
+            }
+
+            noPosts.style.display = 'none';
+            blogGrid.style.display = 'grid';
+
+            // Calculate pagination
+            const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const postsToShow = filteredPosts.slice(startIndex, endIndex);
+
+            // Display posts
+            blogGrid.innerHTML = postsToShow.map(post => createBlogCard(post)).join('');
+
+            // Display pagination
+            if (totalPages > 1) {
+                pagination.style.display = 'flex';
+                pagination.innerHTML = createPagination(totalPages);
+            } else {
+                pagination.style.display = 'none';
+            }
+        }
+
+        function createBlogCard(post) {
+            const date = post.createdAt ? new Date(post.createdAt.toDate()).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }) : 'Recent';
+
+            const excerpt = post.excerpt || (post.content ? post.content.substring(0, 150) + '...' : 'Read more to learn about this topic.');
+
+            return `
+                <div class="blog-card" onclick="window.location.href='blog-post.html?id=${post.id}'">
+                    <img src="${post.imageUrl || 'https://via.placeholder.com/400x250?text=EKA+EB5'}" 
+                         alt="${post.title}" 
+                         class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">${post.category || 'General'}</span>
+                            <span><i class="far fa-calendar"></i> ${date}</span>
+                        </div>
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${excerpt}</p>
+                        <div class="blog-footer">
+                            <div class="blog-author">
+                                <i class="far fa-user"></i>
+                                <span>${post.author || 'EKA Team'}</span>
+                            </div>
+                            <a href="blog-post.html?id=${post.id}" class="read-more">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createPagination(totalPages) {
+            let html = '';
+
+            // Previous button
+            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>`;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    html += `<span>...</span>`;
+                }
+            }
+
+            // Next button
+            html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                Next <i class="fas fa-chevron-right"></i>
+            </button>`;
+
+            return html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            displayPosts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Filter posts
+                    const category = btn.dataset.category;
+                    currentCategory = category;
+                    currentPage = 1;
+
+                    if (category === 'all') {
+                        filteredPosts = allPosts;
+                    } else {
+                        filteredPosts = allPosts.filter(post => post.category === category);
+                    }
+
+                    displayPosts();
+                });
+            });
+        }
+
+        function showNoPosts() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('blogGrid').style.display = 'none';
+            document.getElementById('noPosts').style.display = 'block';
+            document.getElementById('pagination').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
