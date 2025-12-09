@@ -1,0 +1,386 @@
+<!-- 
+  WEEK 1 IMPLEMENTATION GUIDE
+  Add these code snippets to your existing pages
+-->
+
+<!-- ========================================
+     STEP 1: ADD TO <HEAD> OF ALL PAGES
+     (index.html, blog.html, faq.html, etc.)
+     ======================================== -->
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- Microsoft Clarity (Heatmaps) -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "YOUR_CLARITY_PROJECT_ID");
+</script>
+
+<!-- Preconnect to external domains for better performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+<!-- SEO Meta Tags (Update for each page) -->
+<meta name="keywords" content="EB-5 visa, US investment visa, green card India, immigration consultant, regional center, EB5 program">
+<meta name="author" content="EKA EB5 Consultants LLP">
+<link rel="canonical" href="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/">
+<meta property="og:title" content="EKA EB5 Consultants - US Investment Visa Experts">
+<meta property="og:description" content="98% approval rate, 150+ families served, 1500 Cr+ investments processed. Your trusted partner for EB-5 visa success.">
+<meta property="og:image" content="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/og-image.jpg">
+
+<!-- Twitter Card -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/">
+<meta property="twitter:title" content="EKA EB5 Consultants - US Investment Visa Experts">
+<meta property="twitter:description" content="98% approval rate, 150+ families served. Your trusted partner for EB-5 visa success.">
+<meta property="twitter:image" content="https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/twitter-image.jpg">
+
+
+<!-- ========================================
+     STEP 2: ADD BEFORE </BODY> OF ALL PAGES
+     ======================================== -->
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/917979007970?text=Hi%2C%20I'm%20interested%20in%20EB-5%20consultation" 
+   class="whatsapp-float" 
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  background: #128C7E;
+}
+
+.whatsapp-float i {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 80px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
+</style>
+
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<!-- Event Tracking Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Track button clicks
+  document.querySelectorAll('button, .cta-button, .btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'button_click', {
+          button_text: this.textContent.trim(),
+          button_location: this.closest('section')?.id || 'unknown'
+        });
+      }
+    });
+  });
+  
+  // Track phone clicks
+  document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'phone_click', {
+          phone_number: this.href.replace('tel:', '')
+        });
+      }
+    });
+  });
+  
+  // Track email clicks
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'email_click', {
+          email: this.href.replace('mailto:', '')
+        });
+      }
+    });
+  });
+  
+  // Track WhatsApp clicks
+  document.querySelectorAll('.whatsapp-float').forEach(link => {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'whatsapp_click', {
+          source: 'float_button'
+        });
+      }
+    });
+  });
+  
+  // Track scroll depth
+  let maxScroll = 0;
+  let scrollTracked = {25: false, 50: false, 75: false, 100: false};
+  
+  window.addEventListener('scroll', () => {
+    const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    
+    if (scrollPercent > maxScroll) {
+      maxScroll = scrollPercent;
+      
+      if (scrollPercent >= 25 && !scrollTracked[25]) {
+        scrollTracked[25] = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll_depth', { depth: '25%' });
+        }
+      } else if (scrollPercent >= 50 && !scrollTracked[50]) {
+        scrollTracked[50] = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll_depth', { depth: '50%' });
+        }
+      } else if (scrollPercent >= 75 && !scrollTracked[75]) {
+        scrollTracked[75] = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll_depth', { depth: '75%' });
+        }
+      } else if (scrollPercent >= 100 && !scrollTracked[100]) {
+        scrollTracked[100] = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll_depth', { depth: '100%' });
+        }
+      }
+    }
+  });
+  
+  // Track time on page
+  let startTime = Date.now();
+  window.addEventListener('beforeunload', () => {
+    const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'time_on_page', {
+        duration_seconds: timeOnPage
+      });
+    }
+  });
+  
+  // Track outbound links
+  document.querySelectorAll('a[href^="http"]').forEach(link => {
+    if (!link.href.includes(window.location.hostname)) {
+      link.addEventListener('click', function() {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'outbound_click', {
+            url: this.href
+          });
+        }
+      });
+    }
+  });
+});
+</script>
+
+
+<!-- ========================================
+     STEP 3: UPDATE ALL <img> TAGS
+     Add loading="lazy" to all images
+     ======================================== -->
+
+<!-- Before -->
+<img src="image.jpg" alt="Description">
+
+<!-- After -->
+<img src="image.jpg" alt="Description" loading="lazy" width="800" height="600">
+
+
+<!-- ========================================
+     STEP 4: ADD SCHEMA MARKUP (Before </body>)
+     ======================================== -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "EKA EB5 Consultants LLP",
+  "image": "https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/logo.png",
+  "description": "India's premier EB-5 visa consultancy with 98% approval rate",
+  "url": "https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/",
+  "telephone": "+91-7979007970",
+  "email": "info@ekaeb5visa.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "150",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "priceRange": "$$$$",
+  "sameAs": [
+    "https://www.linkedin.com/company/eka-eb5",
+    "https://www.youtube.com/c/ekaeb5"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "EKA EB5 Consultants LLP",
+  "url": "https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/",
+  "logo": "https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-7979007970",
+    "contactType": "Customer Service",
+    "areaServed": "IN",
+    "availableLanguage": ["en", "hi", "gu"]
+  },
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Nikhil Adesara",
+      "jobTitle": "Managing Partner"
+    },
+    {
+      "@type": "Person",
+      "name": "Vibhuti Dhand Adesara",
+      "jobTitle": "Partner"
+    }
+  ]
+}
+</script>
+
+
+<!-- ========================================
+     SETUP INSTRUCTIONS
+     ======================================== -->
+
+<!--
+1. GOOGLE ANALYTICS SETUP:
+   - Go to https://analytics.google.com/
+   - Create account (if needed)
+   - Create property for your website
+   - Get Measurement ID (G-XXXXXXXXXX)
+   - Replace G-XXXXXXXXXX in the code above
+
+2. MICROSOFT CLARITY SETUP:
+   - Go to https://clarity.microsoft.com/
+   - Sign up (free)
+   - Create project
+   - Get Project ID
+   - Replace YOUR_CLARITY_PROJECT_ID in the code above
+
+3. TAWK.TO LIVE CHAT SETUP:
+   - Go to https://www.tawk.to/
+   - Sign up (free)
+   - Create property
+   - Get widget code
+   - Replace YOUR_PROPERTY_ID and YOUR_WIDGET_ID in the code above
+   - Customize widget appearance in Tawk.to dashboard
+   - Set up automated greetings
+   - Install mobile app for notifications
+
+4. FORMSPREE CONTACT FORM SETUP:
+   - Go to https://formspree.io/
+   - Sign up (free - 50 submissions/month)
+   - Create form
+   - Get form ID
+   - Update contact form action URL
+
+5. MAILCHIMP NEWSLETTER SETUP:
+   - Go to https://mailchimp.com/
+   - Sign up (free - 2,000 subscribers)
+   - Create audience
+   - Generate embedded form code
+   - Add to website footer
+
+6. CALENDLY SETUP:
+   - Go to https://calendly.com/
+   - Sign up (free tier available)
+   - Set up event type (30-min consultation)
+   - Get scheduling link
+   - Add to website
+
+7. IMAGE OPTIMIZATION:
+   - Convert all images to WebP format
+   - Use online tools: https://squoosh.app/
+   - Or use command line: cwebp -q 80 input.jpg -o output.webp
+   - Update all <img> tags with loading="lazy"
+
+8. CREATE SITEMAP.XML:
+   - Create file: sitemap.xml
+   - Add all page URLs
+   - Submit to Google Search Console
+
+9. CREATE ROBOTS.TXT:
+   - Create file: robots.txt
+   - Add sitemap URL
+   - Allow all crawlers
+
+10. TESTING:
+    - Test all analytics tracking
+    - Test WhatsApp button
+    - Test live chat
+    - Test contact form
+    - Test on mobile devices
+    - Run Lighthouse audit
+    - Check accessibility with WAVE
+-->
