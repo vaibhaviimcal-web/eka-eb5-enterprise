@@ -1,0 +1,48 @@
+name: Update Calendly Links
+
+on:
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  update-calendly:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Update Calendly URLs
+        run: |
+          echo "🔄 Updating Calendly URLs to calendly.com/eka-eb5..."
+          
+          # Update calculator.html
+          sed -i "s|https://calendly.com/YOUR_USERNAME/30min|https://calendly.com/eka-eb5|g" calculator.html
+          echo "✅ Updated calculator.html"
+          
+          # Update resources.html
+          sed -i "s|https://calendly.com/YOUR_USERNAME/30min|https://calendly.com/eka-eb5|g" resources.html
+          echo "✅ Updated resources.html"
+          
+          # Update blog post
+          sed -i "s|https://calendly.com/YOUR_USERNAME/30min|https://calendly.com/eka-eb5|g" blog/eb5-vs-eb2-niw-comparison.html
+          echo "✅ Updated blog post"
+          
+          # Also update any remaining YOUR_USERNAME references
+          find . -type f \( -name "*.html" -o -name "*.md" \) -exec sed -i "s|YOUR_USERNAME|eka-eb5|g" {} +
+          echo "✅ Updated all remaining references"
+          
+          echo ""
+          echo "🎉 All Calendly URLs updated successfully!"
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "🔗 Update Calendly URLs to calendly.com/eka-eb5"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
