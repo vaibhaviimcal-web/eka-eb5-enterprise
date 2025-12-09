@@ -11,9 +11,12 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Firebase -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    
+    <!-- Firebase Initialization (CORRECT API KEY) -->
+    <script src="firebase-init.js"></script>
     
     <style>
         :root {
@@ -348,9 +351,6 @@
         </div>
     </div>
 
-    <!-- Firebase Config -->
-    <script src="firebase-config.js"></script>
-
     <script>
         const googleSignInBtn = document.getElementById('googleSignInBtn');
         const loginForm = document.getElementById('loginForm');
@@ -364,17 +364,20 @@
             'admin@ekaeb5.com'
         ];
 
-        // Initialize Firebase
-        console.log('🔥 Initializing Firebase...');
-        initializeFirebase();
-
-        // Check if already logged in
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user && ADMIN_EMAILS.includes(user.email)) {
-                console.log('✅ User already logged in:', user.email);
-                window.location.href = 'admin.html';
-            }
-        });
+        // Wait for Firebase to be ready
+        setTimeout(() => {
+            console.log('🔥 Firebase ready check...');
+            console.log('Firebase apps:', firebase.apps.length);
+            console.log('Auth instance:', !!firebase.auth());
+            
+            // Check if already logged in
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user && ADMIN_EMAILS.includes(user.email)) {
+                    console.log('✅ User already logged in:', user.email);
+                    window.location.href = 'admin.html';
+                }
+            });
+        }, 500);
 
         // Toggle email form visibility
         toggleEmailFormBtn.addEventListener('click', () => {
@@ -505,7 +508,6 @@
 
         // Debug info
         console.log('📧 Allowed admin emails:', ADMIN_EMAILS);
-        console.log('🔧 Firebase Auth ready:', !!firebase.auth());
     </script>
 </body>
 </html>
