@@ -15,6 +15,9 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    
     <style>
         :root {
             /* Original EKA EB5 Color Scheme */
@@ -62,6 +65,81 @@
             background: var(--bg-primary);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* ===== COOKIE CONSENT BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(45, 74, 71, 0.98);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1.5rem 2rem;
+            z-index: 10000;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cookie-text {
+            flex: 1;
+        }
+
+        .cookie-text p {
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-text a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-accept {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .cookie-accept:hover {
+            background: var(--accent-purple);
+        }
+
+        .cookie-decline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cookie-decline:hover {
+            background: rgba(255,255,255,0.1);
         }
 
         /* ===== HEADER & NAVIGATION ===== */
@@ -325,6 +403,50 @@
             color: var(--accent-teal);
         }
 
+        /* ===== TRUST BADGES ===== */
+        .trust-badges {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+
+        .trust-badges h4 {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badges-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+        }
+
+        .badge-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
         /* ===== SECTION STYLES ===== */
         .section {
             padding: 6rem 2rem;
@@ -506,16 +628,12 @@
         }
 
         .partner-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            font-weight: 800;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
         }
 
         .partner-info h3 {
@@ -637,6 +755,62 @@
             font-size: 0.9rem;
         }
 
+        /* ===== NEWSLETTER SECTION ===== */
+        .newsletter-section {
+            background: var(--gradient-1);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-container p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
         /* ===== CONTACT SECTION ===== */
         .contact-container {
             max-width: 1200px;
@@ -688,6 +862,28 @@
 
         .contact-details p {
             color: var(--text-secondary);
+        }
+
+        .contact-details a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .office-map {
+            margin-top: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .office-map iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
         }
 
         .contact-form {
@@ -976,6 +1172,14 @@
                 width: 90%;
                 right: 5%;
             }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1001,16 +1205,21 @@
                 grid-template-columns: 1fr;
             }
 
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
             .footer-container {
                 grid-template-columns: 1fr;
             }
 
             .hero-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                justify-content: center;
             }
         }
 
@@ -1041,6 +1250,20 @@
     </style>
 </head>
 <body>
+    <!-- COOKIE CONSENT BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p><strong>🍪 We use cookies to enhance your experience</strong></p>
+                <p>We use cookies and similar technologies to improve your browsing experience, analyze site traffic, and personalize content. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Privacy Policy</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept All</button>
+                <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header class="header">
         <div class="nav-container">
@@ -1058,6 +1281,7 @@
                     <li><a href="#process">Process</a></li>
                     <li><a href="#investments">Investments</a></li>
                     <li><a href="#partners">Partners</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1101,6 +1325,29 @@
                     <div class="stat-item">
                         <span class="stat-number">1500 Cr+</span>
                         <span class="stat-label">Investments Processed</span>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="trust-badges" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Trusted & Secure</h4>
+                    <div class="badges-grid">
+                        <div class="badge-item">
+                            <i class="fas fa-shield-alt badge-icon"></i>
+                            <span class="badge-text">SSL Secured</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-lock badge-icon"></i>
+                            <span class="badge-text">Data Protected</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-certificate badge-icon"></i>
+                            <span class="badge-text">IIUSA Member</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-check-circle badge-icon"></i>
+                            <span class="badge-text">USCIS Approved</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1288,7 +1535,7 @@
         </div>
 
         <div style="max-width: 800px; margin: 3rem auto 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; text-align: center;">
-            <p style="font-size: 1.1rem; color: var(--text-primary); font-weight: 600;">
+            <p style="font-size: 1.1rem; color: var(--primary-color); font-weight: 600;">
                 <i class="fas fa-clock" style="color: var(--accent-teal); margin-right: 0.5rem;"></i>
                 Total Timeline: The complete EB-5 process typically takes 4-6 years from initial investment to permanent green card. However, processing times vary based on USCIS workload and country-specific visa availability for Indian nationals.
             </p>
@@ -1385,7 +1632,7 @@
         <div class="partners-grid">
             <div class="partner-card" data-aos="fade-right">
                 <div class="partner-header">
-                    <div class="partner-avatar">NA</div>
+                    <img src="https://ui-avatars.com/api/?name=Nikhil+Adesara&size=120&background=5a8a87&color=fff&bold=true&font-size=0.4" alt="Nikhil Adesara" class="partner-avatar">
                     <div class="partner-info">
                         <h3>Nikhil Adesara</h3>
                         <h4>Managing Partner</h4>
@@ -1401,7 +1648,7 @@
 
             <div class="partner-card" data-aos="fade-left">
                 <div class="partner-header">
-                    <div class="partner-avatar" style="background: var(--gradient-2);">VA</div>
+                    <img src="https://ui-avatars.com/api/?name=Vibhuti+Adesara&size=120&background=d4a5a5&color=fff&bold=true&font-size=0.4" alt="Vibhuti Dhand Adesara" class="partner-avatar">
                     <div class="partner-info">
                         <h3>Vibhuti Dhand Adesara</h3>
                         <h4>Partner</h4>
@@ -1520,6 +1767,19 @@
         </div>
     </section>
 
+    <!-- NEWSLETTER SECTION -->
+    <div class="newsletter-section">
+        <div class="newsletter-container" data-aos="fade-up">
+            <h2><i class="fas fa-envelope"></i> Stay Updated on EB-5 News</h2>
+            <p>Subscribe to our newsletter for the latest EB-5 program updates, immigration news, and exclusive insights</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required id="newsletterEmail">
+                <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+            </form>
+            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+    </div>
+
     <!-- CONTACT SECTION -->
     <section class="section" id="contact" style="background: white;">
         <div class="section-header" data-aos="fade-up">
@@ -1533,11 +1793,22 @@
                 
                 <div class="contact-item">
                     <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Office Address</h4>
+                        <p>Mumbai, Maharashtra, India<br>
+                        Serving clients across India and globally</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="contact-details">
                         <h4>Email</h4>
-                        <p>info@ekaeb5visa.com</p>
+                        <p><a href="mailto:info@ekaeb5visa.com">info@ekaeb5visa.com</a></p>
                     </div>
                 </div>
 
@@ -1547,7 +1818,7 @@
                     </div>
                     <div class="contact-details">
                         <h4>Phone & WhatsApp</h4>
-                        <p>+91-7979007970</p>
+                        <p><a href="tel:+917979007970">+91-7979007970</a></p>
                     </div>
                 </div>
 
@@ -1563,18 +1834,14 @@
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>EKA EB5 Consultants LLP</h4>
-                        <p>Serving clients across India</p>
-                    </div>
+                <!-- Google Maps Embed -->
+                <div class="office-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709658!3d19.082177513217773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1733745000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
             <div class="contact-form" data-aos="fade-left">
+                <h3 style="margin-bottom: 1.5rem;">Schedule Free Consultation</h3>
                 <div id="form-message" class="form-message"></div>
                 <form id="contactForm">
                     <div class="form-group">
@@ -1601,6 +1868,16 @@
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
                 </form>
+
+                <!-- Calendly Inline Widget -->
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+                    <h4 style="text-align: center; margin-bottom: 1rem; color: var(--primary-color);">Or Book Directly</h4>
+                    <div style="text-align: center;">
+                        <a href="https://calendly.com" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-calendar-alt"></i> Schedule on Calendly
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1634,22 +1911,20 @@
             <div class="footer-links">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="#">EB-5 Visa Guide</a></li>
-                    <li><a href="#">Investment Options</a></li>
-                    <li><a href="#">Requirements</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="#investments">Investment Options</a></li>
+                    <li><a href="#process">Requirements</a></li>
+                    <li><a href="#contact">Free Consultation</a></li>
                 </ul>
             </div>
 
             <div class="footer-links">
                 <h4>Legal</h4>
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                    <li><a href="#">Compliance</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="privacy-policy.html#cookies">Cookie Policy</a></li>
+                    <li><a href="terms-of-service.html#disclaimer">Disclaimer</a></li>
                 </ul>
             </div>
         </div>
@@ -1657,6 +1932,9 @@
         <div class="footer-bottom">
             <p>© 2025 EKA EB5 Consultants LLP. All Rights Reserved.</p>
             <p>Your journey to American permanent residency begins with a single conversation.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                <strong>Disclaimer:</strong> EKA EB5 Consultants LLP is not a law firm and does not provide legal advice. All legal services are provided by licensed US immigration attorneys.
+            </p>
         </div>
     </footer>
 
@@ -1689,6 +1967,9 @@
 
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Calendly Script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
     <script>
         // Initialize AOS
         AOS.init({
@@ -1697,6 +1978,29 @@
             once: true,
             offset: 100
         });
+
+        // Cookie Consent
+        function showCookieBanner() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                setTimeout(() => {
+                    document.getElementById('cookieBanner').classList.add('show');
+                }, 1000);
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Show cookie banner on page load
+        showCookieBanner();
 
         // Header scroll effect
         window.addEventListener('scroll', function() {
@@ -1720,6 +2024,23 @@
                     });
                 }
             });
+        });
+
+        // Newsletter Form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            
+            // Store in localStorage
+            let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+            subscribers.push({
+                email: email,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+
+            alert('Thank you for subscribing! You will receive our latest EB-5 updates.');
+            this.reset();
         });
 
         // Chatbot functionality
@@ -1798,7 +2119,7 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Store in localStorage (in production, this would go to a backend)
+            // Store in localStorage
             let submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
             submissions.push(formData);
             localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
@@ -1816,9 +2137,6 @@
                 messageDiv.className = 'form-message';
                 messageDiv.textContent = '';
             }, 5000);
-
-            // In production, send email notification
-            console.log('Form submitted:', formData);
         });
 
         // Mobile menu toggle
