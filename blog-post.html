@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Blog Post - EKA EB5 Consultants</title>
+    <meta name="description" id="pageDescription" content="Read the latest EB-5 visa insights from EKA EB5 Consultants">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #2d4a47;
+            --secondary-color: #c4a484;
+            --accent-teal: #5a8a87;
+            --text-primary: #2d4a47;
+            --text-secondary: #6B7280;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #f5f0e8;
+            --border-color: #e8e0d5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.8;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-teal);
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            gap: 0.75rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-category {
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .article-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-color);
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--primary-color);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--accent-teal);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .tag {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .author-box {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .error {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .error i {
+            font-size: 4rem;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 300px;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">EKA EB5</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading">
+        <i class="fas fa-spinner fa-spin"></i> Loading article...
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="error" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <h2>Article Not Found</h2>
+        <p>Sorry, we couldn't find the article you're looking for.</p>
+        <a href="blog.html" class="back-link" style="margin-top: 2rem;">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+    </div>
+
+    <!-- Article Container -->
+    <article id="articleContainer" class="article-container" style="display: none;">
+        <a href="blog.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+
+        <div class="article-header">
+            <span id="articleCategory" class="article-category"></span>
+            <h1 id="articleTitle" class="article-title"></h1>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="far fa-user"></i>
+                    <span id="articleAuthor"></span>
+                </div>
+                <div class="meta-item">
+                    <i class="far fa-calendar"></i>
+                    <span id="articleDate"></span>
+                </div>
+                <div class="meta-item">
+                    <i class="far fa-eye"></i>
+                    <span id="articleViews"></span> views
+                </div>
+            </div>
+        </div>
+
+        <img id="articleImage" class="article-image" alt="">
+
+        <div id="articleContent" class="article-content"></div>
+
+        <div id="articleTags" class="article-tags"></div>
+
+        <div class="author-box">
+            <div id="authorAvatar" class="author-avatar"></div>
+            <div class="author-info">
+                <h4 id="authorName"></h4>
+                <p id="authorBio"></p>
+            </div>
+        </div>
+    </article>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            initializeFirebase();
+            await loadBlogPost();
+        });
+
+        async function loadBlogPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            if (!postId) {
+                showError();
+                return;
+            }
+
+            try {
+                const result = await FirebaseDB.getBlogPost(postId);
+
+                if (result.success) {
+                    displayPost(result.post);
+                } else {
+                    showError();
+                }
+            } catch (error) {
+                console.error('Error loading post:', error);
+                showError();
+            }
+        }
+
+        function displayPost(post) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('articleContainer').style.display = 'block';
+
+            // Update page title and meta
+            document.getElementById('pageTitle').textContent = `${post.title} - EKA EB5 Consultants`;
+            document.getElementById('pageDescription').content = post.excerpt || post.content.substring(0, 160);
+
+            // Display article data
+            document.getElementById('articleCategory').textContent = post.category || 'General';
+            document.getElementById('articleTitle').textContent = post.title;
+            document.getElementById('articleAuthor').textContent = post.author || 'EKA Team';
+            
+            const date = post.createdAt ? new Date(post.createdAt.toDate()).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }) : 'Recent';
+            document.getElementById('articleDate').textContent = date;
+            
+            document.getElementById('articleViews').textContent = post.views || 0;
+
+            // Display image
+            const articleImage = document.getElementById('articleImage');
+            if (post.imageUrl) {
+                articleImage.src = post.imageUrl;
+                articleImage.alt = post.title;
+            } else {
+                articleImage.style.display = 'none';
+            }
+
+            // Display content (convert line breaks to paragraphs)
+            const content = post.content.split('\n\n').map(para => `<p>${para}</p>`).join('');
+            document.getElementById('articleContent').innerHTML = content;
+
+            // Display tags
+            if (post.tags && post.tags.length > 0) {
+                const tagsHtml = post.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+                document.getElementById('articleTags').innerHTML = tagsHtml;
+            }
+
+            // Display author info
+            const authorName = post.author || 'EKA Team';
+            const authorInitial = authorName.charAt(0).toUpperCase();
+            document.getElementById('authorAvatar').textContent = authorInitial;
+            document.getElementById('authorName').textContent = authorName;
+            document.getElementById('authorBio').textContent = post.authorBio || 'Expert EB-5 consultant at EKA EB5 Consultants LLP';
+        }
+
+        function showError() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
