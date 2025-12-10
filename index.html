@@ -98,15 +98,8 @@
 
         .cookie-text {
             flex: 1;
-        }
-
-        .cookie-text p {
-            margin-bottom: 0.5rem;
-        }
-
-        .cookie-text a {
-            color: var(--secondary-color);
-            text-decoration: underline;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .cookie-buttons {
@@ -123,884 +116,19 @@
             transition: all 0.3s ease;
         }
 
-        .cookie-accept {
+        .cookie-btn.accept {
             background: var(--secondary-color);
             color: white;
         }
 
-        .cookie-accept:hover {
-            background: var(--accent-purple);
-        }
-
-        .cookie-decline {
+        .cookie-btn.decline {
             background: transparent;
             color: white;
             border: 2px solid white;
         }
 
-        .cookie-decline:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* ===== HEADER & NAVIGATION ===== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-menu a:hover {
-            color: var(--accent-teal);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-teal);
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-teal);
+        .cookie-btn:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-purple);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--border-color);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-teal);
-            color: var(--accent-teal);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            margin-top: 80px;
-            min-height: 90vh;
-            background: var(--gradient-hero);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(45,74,71,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.5;
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--primary-color);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            color: var(--primary-color);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--accent-teal);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            color: var(--primary-color);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .hero-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .hero-card ul {
-            list-style: none;
-        }
-
-        .hero-card li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .hero-card li:last-child {
-            border-bottom: none;
-        }
-
-        .hero-card i {
-            color: var(--accent-teal);
-        }
-
-        /* ===== TRUST BADGES ===== */
-        .trust-badges {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-            margin-top: 2rem;
-        }
-
-        .trust-badges h4 {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .badges-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .badge-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .badge-icon {
-            font-size: 2.5rem;
-            color: var(--accent-teal);
-        }
-
-        .badge-text {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-
-        /* ===== SECTION STYLES ===== */
-        .section {
-            padding: 6rem 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-
-        /* ===== FEATURES GRID ===== */
-        .features-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .feature-card:nth-child(1) .feature-icon { background: var(--gradient-1); }
-        .feature-card:nth-child(2) .feature-icon { background: var(--gradient-2); }
-        .feature-card:nth-child(3) .feature-icon { background: var(--gradient-3); }
-        .feature-card:nth-child(4) .feature-icon { background: var(--gradient-4); }
-        .feature-card:nth-child(5) .feature-icon { background: var(--gradient-1); }
-        .feature-card:nth-child(6) .feature-icon { background: var(--gradient-2); }
-        .feature-card:nth-child(7) .feature-icon { background: var(--gradient-3); }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .feature-card p, .feature-card ul {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .feature-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .feature-card ul li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .feature-card ul li::before {
-            content: "•";
-            color: var(--accent-teal);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* ===== PROCESS TIMELINE ===== */
-        .process-grid {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .process-step {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .process-step::before {
-            content: attr(data-step);
-            position: absolute;
-            top: -15px;
-            left: 2rem;
-            width: 40px;
-            height: 40px;
-            background: var(--accent-teal);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-        }
-
-        .process-step h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .process-duration {
-            color: var(--accent-teal);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .process-step p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* ===== PARTNERS SECTION ===== */
-        .partners-grid {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 3rem;
-        }
-
-        .partner-card {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .partner-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-2xl);
-        }
-
-        .partner-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .partner-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .partner-info h3 {
-            font-size: 1.75rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .partner-info h4 {
-            color: var(--accent-teal);
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .partner-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .partner-card ul {
-            list-style: none;
-        }
-
-        .partner-card li {
-            padding: 0.75rem 0;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .partner-card li i {
-            color: var(--accent-teal);
-        }
-
-        /* ===== STATS SECTION ===== */
-        .stats-grid {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-card .stat-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--accent-teal);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .stat-card .stat-description {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials-grid {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 1rem;
-            left: 1.5rem;
-            font-size: 5rem;
-            color: var(--accent-teal);
-            opacity: 0.2;
-            font-family: Georgia, serif;
-        }
-
-        .testimonial-text {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .testimonial-location {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* ===== NEWSLETTER SECTION ===== */
-        .newsletter-section {
-            background: var(--gradient-1);
-            padding: 4rem 2rem;
-            margin: 4rem 0;
-        }
-
-        .newsletter-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            color: white;
-        }
-
-        .newsletter-container h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter-container p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .newsletter-form button {
-            padding: 1rem 2rem;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--accent-purple);
-            transform: translateY(-2px);
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact-container {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-teal);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details h4 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details p {
-            color: var(--text-secondary);
-        }
-
-        .contact-details a {
-            color: var(--accent-teal);
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            text-decoration: underline;
-        }
-
-        .office-map {
-            margin-top: 2rem;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-
-        .office-map iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: var(--bg-light);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-teal);
-            box-shadow: 0 0 0 3px rgba(90, 138, 135, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-message {
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .form-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-about h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-about p {
-            opacity: 0.8;
-            line-height: 1.8;
-        }
-
-        .footer-links h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            opacity: 0.8;
         }
 
         /* ===== FLOATING CHAT ===== */
@@ -1021,26 +149,38 @@
             box-shadow: var(--shadow-xl);
             z-index: 999;
             transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(90, 138, 135, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(90, 138, 135, 0);
+            }
         }
 
         .floating-chat:hover {
             transform: scale(1.1);
             box-shadow: var(--shadow-2xl);
             background: var(--accent-purple);
+            animation: none;
         }
 
         .floating-chat .badge {
             position: absolute;
             top: -5px;
             right: -5px;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: var(--accent-pink);
             border-radius: 50%;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 700;
         }
 
         /* ===== CHATBOT MODAL ===== */
@@ -1049,8 +189,8 @@
             position: fixed;
             bottom: 100px;
             right: 2rem;
-            width: 400px;
-            height: 600px;
+            width: 420px;
+            max-height: 650px;
             background: white;
             border-radius: 20px;
             box-shadow: var(--shadow-2xl);
@@ -1061,6 +201,18 @@
 
         .chatbot-modal.active {
             display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .chatbot-header {
@@ -1075,14 +227,29 @@
 
         .chatbot-header h3 {
             font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .chatbot-close {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
         }
 
         .chatbot-messages {
@@ -1090,12 +257,25 @@
             padding: 1.5rem;
             overflow-y: auto;
             background: var(--bg-light);
+            max-height: 450px;
         }
 
         .chatbot-message {
             margin-bottom: 1rem;
             display: flex;
             gap: 0.75rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .chatbot-message.bot {
@@ -1107,21 +287,57 @@
         }
 
         .message-bubble {
-            max-width: 70%;
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            line-height: 1.5;
+            max-width: 80%;
+            padding: 0.875rem 1.125rem;
+            border-radius: 16px;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .chatbot-message.bot .message-bubble {
             background: white;
             color: var(--text-primary);
             border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
         .chatbot-message.user .message-bubble {
             background: var(--accent-teal);
             color: white;
+        }
+
+        /* Quick Reply Buttons */
+        .quick-replies {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .quick-reply-btn {
+            background: white;
+            border: 2px solid var(--accent-teal);
+            color: var(--accent-teal);
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quick-reply-btn:hover {
+            background: var(--accent-teal);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .quick-reply-btn i {
+            font-size: 1rem;
         }
 
         .chatbot-input-area {
@@ -1130,813 +346,106 @@
             display: flex;
             gap: 0.75rem;
             background: white;
+            border-radius: 0 0 20px 20px;
         }
 
         .chatbot-input-area input {
             flex: 1;
-            padding: 0.75rem;
+            padding: 0.875rem 1rem;
             border: 2px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
             font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input-area input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
         }
 
         .chatbot-input-area button {
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 1.25rem;
             background: var(--accent-teal);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .chatbot-input-area button:hover {
             background: var(--accent-purple);
+            transform: translateY(-2px);
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .chatbot-modal {
-                width: 90%;
-                right: 5%;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
+        /* Typing Indicator */
+        .typing-indicator {
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.75rem 1rem;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
         }
 
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .features-grid,
-            .partners-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .cookie-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .cookie-buttons {
-                justify-content: center;
-            }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
             }
-            to {
+            30% {
+                transform: translateY(-10px);
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chatbot-modal {
+                width: calc(100% - 2rem);
+                right: 1rem;
+                bottom: 90px;
             }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
 
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
+            .floating-chat {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- COOKIE CONSENT BANNER -->
+    <!-- Cookie Banner -->
     <div class="cookie-banner" id="cookieBanner">
         <div class="cookie-content">
             <div class="cookie-text">
-                <p><strong>🍪 We use cookies to enhance your experience</strong></p>
-                <p>We use cookies and similar technologies to improve your browsing experience, analyze site traffic, and personalize content. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Privacy Policy</a></p>
+                We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
             </div>
             <div class="cookie-buttons">
-                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept All</button>
-                <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
+                <button class="cookie-btn accept" onclick="acceptCookies()">Accept</button>
+                <button class="cookie-btn decline" onclick="declineCookies()">Decline</button>
             </div>
         </div>
     </div>
-
-    <!-- HEADER -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-passport"></i>
-                </div>
-                <span>EKA EB5</span>
-            </a>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#eb5-program">EB-5 Program</a></li>
-                    <li><a href="#process">Process</a></li>
-                    <li><a href="#investments">Investments</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-actions">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-calendar"></i> Book Consultation
-                </a>
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content" data-aos="fade-right">
-                <h1>EKA EB5 Consultants LLP</h1>
-                <p class="subtitle">Your Trusted Partner for US EB-5 Investment Visa Success</p>
-                
-                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-calendar"></i> Schedule Consultation
-                    </a>
-                    <a href="#about" class="btn btn-secondary">
-                        <i class="fas fa-info-circle"></i> Learn More
-                    </a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Approval Rate</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">150+</span>
-                        <span class="stat-label">Families Served</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">1500 Cr+</span>
-                        <span class="stat-label">Investments Processed</span>
-                    </div>
-                </div>
-
-                <!-- Trust Badges -->
-                <div class="trust-badges" data-aos="fade-up" data-aos-delay="200">
-                    <h4>Trusted & Secure</h4>
-                    <div class="badges-grid">
-                        <div class="badge-item">
-                            <i class="fas fa-shield-alt badge-icon"></i>
-                            <span class="badge-text">SSL Secured</span>
-                        </div>
-                        <div class="badge-item">
-                            <i class="fas fa-lock badge-icon"></i>
-                            <span class="badge-text">Data Protected</span>
-                        </div>
-                        <div class="badge-item">
-                            <i class="fas fa-certificate badge-icon"></i>
-                            <span class="badge-text">IIUSA Member</span>
-                        </div>
-                        <div class="badge-item">
-                            <i class="fas fa-check-circle badge-icon"></i>
-                            <span class="badge-text">USCIS Approved</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-visual" data-aos="fade-left">
-                <div class="hero-card animate-float">
-                    <h3><i class="fas fa-shield-alt"></i> Why Choose EKA?</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> USCIS-Approved Regional Centers</li>
-                        <li><i class="fas fa-check-circle"></i> 10+ Years Experience</li>
-                        <li><i class="fas fa-check-circle"></i> Personalized Guidance</li>
-                        <li><i class="fas fa-check-circle"></i> End-to-End Support</li>
-                        <li><i class="fas fa-check-circle"></i> Transparent Approach</li>
-                        <li><i class="fas fa-check-circle"></i> Multi-Language Support</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section class="section" id="about" style="background: white;">
-        <div class="section-header" data-aos="fade-up">
-            <h2>About EKA EB5 Consultants</h2>
-            <p>Leading EB-5 Visa Specialists in India</p>
-        </div>
-
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem; text-align: center;">
-                EKA EB5 Consultants LLP stands as India's premier advisory firm specialising in US EB-5 investment visa programmes. With years of dedicated experience, we have successfully guided numerous Indian families towards achieving their American dream through strategic investment pathways.
-            </p>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
-                Our boutique consultancy combines deep knowledge of US immigration law with personalised service, ensuring each client receives tailored guidance throughout their EB-5 journey. We pride ourselves on our transparent approach, ethical practices, and unwavering commitment to client success.
-            </p>
-        </div>
-
-        <div class="features-grid" style="margin-top: 4rem;">
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h3>Expert Guidance</h3>
-                <p>Comprehensive support from initial consultation through green card approval</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">
-                    <i class="fas fa-check-double"></i>
-                </div>
-                <h3>Vetted Projects</h3>
-                <p>Only USCIS-approved regional centre projects with proven track records</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3>Personalised Service</h3>
-                <p>Dedicated attention to each family's unique circumstances and goals</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- EB-5 PROGRAM SECTION -->
-    <section class="section" id="eb5-program" style="background: var(--bg-secondary);">
-        <div class="section-header" data-aos="fade-up">
-            <h2>What is the EB-5 Investment Visa Programme</h2>
-            <p>Your Gateway to US Permanent Residency</p>
-        </div>
-
-        <div style="max-width: 1200px; margin: 0 auto 3rem; padding: 0 2rem;">
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
-                The EB-5 Immigrant Investor Programme provides foreign nationals and their families a direct pathway to US permanent residency (green card) through qualifying investments in American businesses. Established by Congress in 1990, this programme stimulates the US economy through job creation and capital investment from foreign sources.
-            </p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
-                <h3>Investment Requirement</h3>
-                <p>Invest $800,000 USD in a Targeted Employment Area (TEA) or $1,050,000 in a standard area through an approved regional centre or direct business</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3>Job Creation</h3>
-                <p>The investment must create or preserve at least 10 full-time jobs for qualified US workers within two years of investor admission</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">
-                    <i class="fas fa-id-card"></i>
-                </div>
-                <h3>Green Card Path</h3>
-                <p>Investors and their immediate family (spouse and unmarried children under 21) receive conditional green cards, leading to permanent residency</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="feature-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>No Sponsorship Required</h3>
-                <p>Unlike employment-based visas, EB-5 requires no employer sponsorship, offering complete freedom in career and location choices</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="feature-icon">
-                    <i class="fas fa-family"></i>
-                </div>
-                <h3>Family Benefits</h3>
-                <p>Spouses can work anywhere in the US, and children gain access to world-class American education without international student restrictions or fees</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
-                <div class="feature-icon">
-                    <i class="fas fa-flag-usa"></i>
-                </div>
-                <h3>Path to Citizenship</h3>
-                <p>After maintaining residency for five years, EB-5 investors become eligible to apply for US citizenship</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Permanent Solution</h3>
-                <p>EB-5 provides permanent residency, not a temporary visa, offering long-term security and stability for your family's future</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS SECTION -->
-    <section class="section" id="process" style="background: white;">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Complete EB-5 Process Guide</h2>
-            <p>From Investment to Green Card Approval</p>
-        </div>
-
-        <div class="process-grid">
-            <div class="process-step" data-step="1" data-aos="fade-up">
-                <h3>Initial Consultation & Evaluation</h3>
-                <div class="process-duration">Duration: 1-2 weeks</div>
-                <p>Comprehensive assessment of your financial qualifications, immigration goals, and family circumstances. We review source of funds documentation and provide preliminary project recommendations tailored to your objectives.</p>
-            </div>
-
-            <div class="process-step" data-step="2" data-aos="fade-up" data-aos-delay="100">
-                <h3>Project Selection & Due Diligence</h3>
-                <div class="process-duration">Duration: 2-4 weeks</div>
-                <p>Detailed evaluation of available regional centre projects, including business plans, job creation models, developer track records, and risk assessments. We conduct thorough due diligence to ensure project viability and compliance.</p>
-            </div>
-
-            <div class="process-step" data-step="3" data-aos="fade-up" data-aos-delay="200">
-                <h3>Investment & Escrow</h3>
-                <div class="process-duration">Duration: 2-3 weeks</div>
-                <p>Preparation of investment agreements and transfer of funds to USCIS-approved escrow accounts. Your capital remains protected until I-526 petition approval, ensuring security throughout the process.</p>
-            </div>
-
-            <div class="process-step" data-step="4" data-aos="fade-up" data-aos-delay="300">
-                <h3>I-526 Petition Filing</h3>
-                <div class="process-duration">Duration: 3-6 months preparation</div>
-                <p>Compilation of comprehensive petition package including source of funds documentation, business plans, and economic reports. Our team works with immigration attorneys to ensure complete, accurate submissions.</p>
-            </div>
-
-            <div class="process-step" data-step="5" data-aos="fade-up" data-aos-delay="400">
-                <h3>I-526 Approval & Visa Processing</h3>
-                <div class="process-duration">Duration: 24-36 months</div>
-                <p>USCIS reviews and approves your petition. Upon approval, you proceed through consular processing at the US Embassy in India or adjustment of status if already in the US.</p>
-            </div>
-
-            <div class="process-step" data-step="6" data-aos="fade-up" data-aos-delay="500">
-                <h3>Conditional Green Card</h3>
-                <div class="process-duration">Duration: 2 years</div>
-                <p>You and your family receive conditional green cards valid for two years. During this period, you establish US residency whilst the regional centre project continues creating requisite jobs.</p>
-            </div>
-
-            <div class="process-step" data-step="7" data-aos="fade-up" data-aos-delay="600">
-                <h3>I-829 Petition & Permanent Residency</h3>
-                <div class="process-duration">Duration: 18-24 months</div>
-                <p>Within 90 days before your conditional green card expires, we file Form I-829 to remove conditions. Upon approval, you receive permanent, unrestricted green cards for your entire family.</p>
-            </div>
-        </div>
-
-        <div style="max-width: 800px; margin: 3rem auto 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; text-align: center;">
-            <p style="font-size: 1.1rem; color: var(--primary-color); font-weight: 600;">
-                <i class="fas fa-clock" style="color: var(--accent-teal); margin-right: 0.5rem;"></i>
-                Total Timeline: The complete EB-5 process typically takes 4-6 years from initial investment to permanent green card. However, processing times vary based on USCIS workload and country-specific visa availability for Indian nationals.
-            </p>
-        </div>
-    </section>
-
-    <!-- INVESTMENT OPTIONS SECTION -->
-    <section class="section" id="investments" style="background: var(--bg-secondary);">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Investment Options and Regional Centre Projects</h2>
-            <p>Vetted Opportunities for Indian Investors</p>
-        </div>
-
-        <div style="max-width: 1200px; margin: 0 auto 3rem; padding: 0 2rem;">
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: center;">
-                EKA EB5 Consultants exclusively recommends USCIS-approved regional centre projects that have undergone rigorous due diligence. We focus on projects with strong developer track records, conservative job creation models, and transparent capital structures to maximise your chances of success.
-            </p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <h3>Real Estate Development</h3>
-                <p>Mixed-use developments, residential projects, and hospitality ventures in high-growth metropolitan areas across the United States.</p>
-                <ul>
-                    <li>Proven asset class with tangible collateral</li>
-                    <li>Strong job creation multipliers</li>
-                    <li>Potential for capital appreciation</li>
-                </ul>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">
-                    <i class="fas fa-road"></i>
-                </div>
-                <h3>Infrastructure Projects</h3>
-                <p>Transportation, energy, and public works projects that serve critical community needs whilst generating substantial employment.</p>
-                <ul>
-                    <li>Government-backed initiatives</li>
-                    <li>Long-term economic impact</li>
-                    <li>Lower commercial risk profile</li>
-                </ul>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">
-                    <i class="fas fa-hospital"></i>
-                </div>
-                <h3>Healthcare Facilities</h3>
-                <p>Medical centres, senior living communities, and specialised care facilities addressing America's growing healthcare infrastructure needs.</p>
-                <ul>
-                    <li>Recession-resistant sector</li>
-                    <li>Essential services demand</li>
-                    <li>Strong institutional backing</li>
-                </ul>
-            </div>
-        </div>
-
-        <div style="max-width: 1200px; margin: 4rem auto 0;">
-            <h3 style="text-align: center; color: var(--primary-color); margin-bottom: 2rem; font-size: 2rem;">Our Due Diligence Process</h3>
-            <div class="process-grid">
-                <div class="process-step" data-step="1" data-aos="fade-up">
-                    <h3>Developer Background Verification</h3>
-                    <p>Comprehensive review of developer history, financial strength, previous project completions, and reputation within the industry.</p>
-                </div>
-
-                <div class="process-step" data-step="2" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Business Plan Analysis</h3>
-                    <p>Detailed examination of project economics, capital stack structure, job creation methodology, and realistic completion timelines.</p>
-                </div>
-
-                <div class="process-step" data-step="3" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Legal Compliance Review</h3>
-                    <p>Verification of USCIS regional centre approval, securities compliance, escrow arrangements, and investor protection mechanisms.</p>
-                </div>
-
-                <div class="process-step" data-step="4" data-aos="fade-up" data-aos-delay="300">
-                    <h3>Independent Economic Analysis</h3>
-                    <p>Third-party validation of job creation projections using USCIS-approved economic methodologies and conservative assumptions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PARTNERS SECTION -->
-    <section class="section" id="partners" style="background: white;">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Meet Our Partners</h2>
-            <p>Nikhil Adesara and Vibhuti Dhand Adesara's Expertise</p>
-        </div>
-
-        <div class="partners-grid">
-            <div class="partner-card" data-aos="fade-right">
-                <div class="partner-header">
-                    <img src="https://ui-avatars.com/api/?name=Nikhil+Adesara&size=120&background=5a8a87&color=fff&bold=true&font-size=0.4" alt="Nikhil Adesara" class="partner-avatar">
-                    <div class="partner-info">
-                        <h3>Nikhil Adesara</h3>
-                        <h4>Managing Partner</h4>
-                    </div>
-                </div>
-                <p>Nikhil brings extensive expertise in international investment immigration, having guided over 100 families through the EB-5 process. His deep understanding of USCIS requirements and regional centre operations ensures clients receive accurate, up-to-date guidance. With a background in finance and immigration law, Nikhil excels at structuring investments that meet both regulatory requirements and family objectives.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> EB-5 immigration specialist with 10+ years experience</li>
-                    <li><i class="fas fa-check-circle"></i> Expert in regional centre project evaluation</li>
-                    <li><i class="fas fa-check-circle"></i> Member of IIUSA (Invest in the USA)</li>
-                </ul>
-            </div>
-
-            <div class="partner-card" data-aos="fade-left">
-                <div class="partner-header">
-                    <img src="https://ui-avatars.com/api/?name=Vibhuti+Adesara&size=120&background=d4a5a5&color=fff&bold=true&font-size=0.4" alt="Vibhuti Dhand Adesara" class="partner-avatar">
-                    <div class="partner-info">
-                        <h3>Vibhuti Dhand Adesara</h3>
-                        <h4>Partner</h4>
-                    </div>
-                </div>
-                <p>Vibhuti specialises in client relationship management and documentation processes, ensuring seamless application preparation and submission. Her meticulous attention to detail and compassionate approach help families navigate the complexities of EB-5 petitions with confidence. She coordinates closely with immigration attorneys and regional centres to expedite processing whilst maintaining compliance.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Immigration documentation specialist</li>
-                    <li><i class="fas fa-check-circle"></i> Client services and relationship management expert</li>
-                    <li><i class="fas fa-check-circle"></i> Fluent in multiple Indian languages</li>
-                </ul>
-            </div>
-        </div>
-
-        <div style="max-width: 800px; margin: 3rem auto 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; text-align: center;">
-            <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: 600;">
-                Combined, Nikhil and Vibhuti have successfully processed EB-5 applications representing over 7500 crores in qualified investments, with a 98% approval rate.
-            </p>
-        </div>
-    </section>
-
-    <!-- STATS SECTION -->
-    <section class="section" style="background: var(--primary-color); color: white;">
-        <div class="section-header" data-aos="fade-up">
-            <h2 style="color: white;">Why Choose EKA EB5 Consultants</h2>
-            <p style="color: rgba(255,255,255,0.8);">Our Track Record and Client Success Stories</p>
-        </div>
-
-        <div class="stats-grid">
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-                <span class="stat-number">98%</span>
-                <div class="stat-label">Approval Rate</div>
-                <div class="stat-description">Industry-leading success rate for I-526 and I-829 petitions</div>
-            </div>
-
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-                <span class="stat-number">150+</span>
-                <div class="stat-label">Families Served</div>
-                <div class="stat-description">Indian families successfully guided through EB-5 process</div>
-            </div>
-
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-                <span class="stat-number">1500 Cr+</span>
-                <div class="stat-label">Investment Processed</div>
-                <div class="stat-description">Total qualified investments facilitated since inception</div>
-            </div>
-
-            <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
-                <span class="stat-number">10+</span>
-                <div class="stat-label">Years Experience</div>
-                <div class="stat-description">Dedicated expertise in EB-5 immigration consulting</div>
-            </div>
-        </div>
-
-        <div style="max-width: 1200px; margin: 4rem auto 0;">
-            <h3 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2rem;">What Sets Us Apart</h3>
-            <div class="features-grid">
-                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up">
-                    <div class="feature-icon" style="background: var(--secondary-color);">
-                        <i class="fas fa-user-check"></i>
-                    </div>
-                    <h3 style="color: white;">Personalised Approach</h3>
-                    <p style="color: rgba(255,255,255,0.8);">We limit our client roster to ensure each family receives dedicated attention and customised guidance throughout their journey. Your success is our priority, not volume processing.</p>
-                </div>
-
-                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon" style="background: var(--secondary-color);">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 style="color: white;">Strategic Partnerships</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Strong relationships with top US immigration attorneys, regional centres, and fund administrators streamline your application process and provide insider insights.</p>
-                </div>
-
-                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-icon" style="background: var(--secondary-color);">
-                        <i class="fas fa-search-dollar"></i>
-                    </div>
-                    <h3 style="color: white;">Rigorous Project Vetting</h3>
-                    <p style="color: rgba(255,255,255,0.8);">Our independent due diligence process goes beyond basic compliance checks. We recommend only projects we would invest in ourselves, ensuring quality and integrity.</p>
-                </div>
-
-                <div class="feature-card" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-icon" style="background: var(--secondary-color);">
-                        <i class="fas fa-life-ring"></i>
-                    </div>
-                    <h3 style="color: white;">End-to-End Support</h3>
-                    <p style="color: rgba(255,255,255,0.8);">From initial consultation through permanent green card receipt, we remain your trusted advisers, providing continuous support and guidance at every stage.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="section" style="background: var(--bg-secondary);">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Client Success Stories</h2>
-            <p>Hear from families who achieved their American dream with EKA</p>
-        </div>
-
-        <div class="testimonials-grid">
-            <div class="testimonial-card" data-aos="fade-up">
-                <div class="testimonial-text">
-                    "EKA EB5 Consultants made our American dream a reality. Nikhil and Vibhuti's expertise, patience, and attention to detail gave us complete confidence throughout the process. Today, our children are thriving in US schools, and we couldn't be more grateful for their guidance."
-                </div>
-                <div class="testimonial-author">Rajesh and Priya M.</div>
-                <div class="testimonial-location">Mumbai</div>
-            </div>
-
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-text">
-                    "The transparency and professionalism EKA demonstrated was exceptional. They carefully explained every step, helped us understand complex requirements, and connected us with a solid regional centre project. Our I-526 was approved in record time thanks to their meticulous preparation."
-                </div>
-                <div class="testimonial-author">Arun K.</div>
-                <div class="testimonial-location">Bangalore</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEWSLETTER SECTION -->
-    <div class="newsletter-section">
-        <div class="newsletter-container" data-aos="fade-up">
-            <h2><i class="fas fa-envelope"></i> Stay Updated on EB-5 News</h2>
-            <p>Subscribe to our newsletter for the latest EB-5 program updates, immigration news, and exclusive insights</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Enter your email address" required id="newsletterEmail">
-                <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
-            </form>
-            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
-        </div>
-    </div>
-
-    <!-- CONTACT SECTION -->
-    <section class="section" id="contact" style="background: white;">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Contact EKA EB5 Consultants</h2>
-            <p>Schedule Your Consultation Today</p>
-        </div>
-
-        <div class="contact-container">
-            <div class="contact-info" data-aos="fade-right">
-                <h3>Get in Touch</h3>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Office Address</h4>
-                        <p>Mumbai, Maharashtra, India<br>
-                        Serving clients across India and globally</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Email</h4>
-                        <p><a href="mailto:info@ekaeb5visa.com">info@ekaeb5visa.com</a></p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Phone & WhatsApp</h4>
-                        <p><a href="tel:+917979007970">+91-7979007970</a></p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Office Hours</h4>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM IST<br>
-                        Saturday: 10:00 AM - 2:00 PM IST<br>
-                        Sunday: By Appointment Only</p>
-                    </div>
-                </div>
-
-                <!-- Google Maps Embed -->
-                <div class="office-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709658!3d19.082177513217773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1733745000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-
-            <div class="contact-form" data-aos="fade-left">
-                <h3 style="margin-bottom: 1.5rem;">Schedule Free Consultation</h3>
-                <div id="form-message" class="form-message"></div>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label>Your Name *</label>
-                        <input type="text" name="name" id="name" required placeholder="Enter your full name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Your Email *</label>
-                        <input type="email" name="email" id="email" required placeholder="your.email@example.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Your Phone</label>
-                        <input type="tel" name="phone" id="phone" placeholder="+91-XXXXXXXXXX">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Your Message *</label>
-                        <textarea name="message" id="message" required placeholder="Tell us about your immigration goals..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-
-                <!-- Calendly Inline Widget -->
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
-                    <h4 style="text-align: center; margin-bottom: 1rem; color: var(--primary-color);">Or Book Directly</h4>
-                    <div style="text-align: center;">
-                        <a href="https://calendly.com" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-                            <i class="fas fa-calendar-alt"></i> Schedule on Calendly
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-about">
-                <h3>EKA EB5 Consultants LLP</h3>
-                <p>Your trusted partner for US EB-5 investment visa success. We combine cutting-edge expertise with personalized service to guide you through every step of your American dream.</p>
-                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#eb5-program">EB-5 Program</a></li>
-                    <li><a href="#process">Process</a></li>
-                    <li><a href="#investments">Investments</a></li>
-                    <li><a href="#partners">Our Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="#investments">Investment Options</a></li>
-                    <li><a href="#process">Requirements</a></li>
-                    <li><a href="#contact">Free Consultation</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                    <li><a href="privacy-policy.html#cookies">Cookie Policy</a></li>
-                    <li><a href="terms-of-service.html#disclaimer">Disclaimer</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2025 EKA EB5 Consultants LLP. All Rights Reserved.</p>
-            <p>Your journey to American permanent residency begins with a single conversation.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
-                <strong>Disclaimer:</strong> EKA EB5 Consultants LLP is not a law firm and does not provide legal advice. All legal services are provided by licensed US immigration attorneys.
-            </p>
-        </div>
-    </footer>
 
     <!-- FLOATING CHAT BUTTON -->
     <div class="floating-chat" id="chatToggle">
@@ -1953,14 +462,10 @@
             </button>
         </div>
         <div class="chatbot-messages" id="chatMessages">
-            <div class="chatbot-message bot">
-                <div class="message-bubble">
-                    Hello! I'm your AI assistant for EB-5 visa queries. How can I help you today?
-                </div>
-            </div>
+            <!-- Messages will be added here dynamically -->
         </div>
         <div class="chatbot-input-area">
-            <input type="text" id="chatInput" placeholder="Type your question...">
+            <input type="text" id="chatInput" placeholder="Or type your question...">
             <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
@@ -2002,48 +507,7 @@
         // Show cookie banner on page load
         showCookieBanner();
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Newsletter Form
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('newsletterEmail').value;
-            
-            // Store in localStorage
-            let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
-            subscribers.push({
-                email: email,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
-
-            alert('Thank you for subscribing! You will receive our latest EB-5 updates.');
-            this.reset();
-        });
-
-        // Chatbot functionality
+        // ===== SMART CHATBOT WITH CLICK-BASED QUESTIONS =====
         const chatToggle = document.getElementById('chatToggle');
         const chatbotModal = document.getElementById('chatbotModal');
         const chatClose = document.getElementById('chatClose');
@@ -2051,109 +515,255 @@
         const chatSend = document.getElementById('chatSend');
         const chatMessages = document.getElementById('chatMessages');
 
-        chatToggle.addEventListener('click', function() {
-            chatbotModal.classList.add('active');
-        });
+        // Conversation State
+        let conversationState = 'initial';
+        let userContext = {};
 
-        chatClose.addEventListener('click', function() {
-            chatbotModal.classList.remove('active');
-        });
+        // Question Database
+        const questionFlow = {
+            initial: {
+                message: "👋 Hello! I'm your EB-5 visa assistant. I can help you with:",
+                questions: [
+                    { text: "💰 Investment Requirements", icon: "fa-dollar-sign", next: "investment" },
+                    { text: "⏱️ Processing Timeline", icon: "fa-clock", next: "timeline" },
+                    { text: "✅ Eligibility Criteria", icon: "fa-check-circle", next: "eligibility" },
+                    { text: "🏢 Project Selection", icon: "fa-building", next: "projects" },
+                    { text: "📞 Book Consultation", icon: "fa-calendar", next: "consultation" }
+                ]
+            },
+            investment: {
+                message: "The EB-5 program requires a minimum investment of:\n\n💵 $800,000 for Targeted Employment Areas (TEA)\n💵 $1,050,000 for standard projects\n\nWhat would you like to know more about?",
+                questions: [
+                    { text: "What is a TEA?", icon: "fa-map-marker-alt", next: "tea_info" },
+                    { text: "Can I get my money back?", icon: "fa-undo", next: "return_capital" },
+                    { text: "How do I prove source of funds?", icon: "fa-file-invoice-dollar", next: "source_funds" },
+                    { text: "← Back to main menu", icon: "fa-arrow-left", next: "initial" }
+                ]
+            },
+            timeline: {
+                message: "⏱️ The EB-5 process typically takes:\n\n📅 4-6 years from initial investment to permanent green card\n\nBreakdown:\n• I-526 Petition: 24-36 months\n• Visa Processing: 6-12 months\n• Conditional Green Card: 2 years\n• I-829 Petition: 18-24 months\n\nWhat else would you like to know?",
+                questions: [
+                    { text: "Can I speed up the process?", icon: "fa-fast-forward", next: "speed_up" },
+                    { text: "What happens during waiting?", icon: "fa-hourglass-half", next: "waiting_period" },
+                    { text: "← Back to main menu", icon: "fa-arrow-left", next: "initial" }
+                ]
+            },
+            eligibility: {
+                message: "✅ To qualify for EB-5, you need:\n\n1️⃣ Lawful source of investment funds\n2️⃣ Minimum investment amount ($800K or $1.05M)\n3️⃣ Investment in USCIS-approved project\n4️⃣ Project must create 10 full-time jobs\n\nYour spouse and unmarried children under 21 are also eligible!\n\nWhat would you like to explore?",
+                questions: [
+                    { text: "Check my eligibility", icon: "fa-clipboard-check", next: "eligibility_check" },
+                    { text: "Family members included?", icon: "fa-users", next: "family_info" },
+                    { text: "← Back to main menu", icon: "fa-arrow-left", next: "initial" }
+                ]
+            },
+            projects: {
+                message: "🏢 We offer vetted EB-5 projects in:\n\n🏗️ Real Estate Development\n🛣️ Infrastructure Projects\n🏥 Healthcare Facilities\n\nAll projects are USCIS-approved with strong track records.\n\nWhat interests you?",
+                questions: [
+                    { text: "View current projects", icon: "fa-list", next: "project_list" },
+                    { text: "How do you vet projects?", icon: "fa-search", next: "due_diligence" },
+                    { text: "← Back to main menu", icon: "fa-arrow-left", next: "initial" }
+                ]
+            },
+            consultation: {
+                message: "📞 Great! Let's schedule your free consultation.\n\nOur experts are available:\n📅 Monday-Friday: 9 AM - 6 PM IST\n\nYou can:\n✅ Book online via Calendly\n✅ Call/WhatsApp: +91-7979007970\n✅ Email: info@ekaeb5visa.com",
+                questions: [
+                    { text: "📅 Book on Calendly", icon: "fa-calendar-check", action: "openCalendly" },
+                    { text: "📱 WhatsApp Us", icon: "fa-whatsapp", action: "openWhatsApp" },
+                    { text: "← Back to main menu", icon: "fa-arrow-left", next: "initial" }
+                ]
+            },
+            tea_info: {
+                message: "🗺️ Targeted Employment Area (TEA) is:\n\n• Rural area OR\n• Area with 150%+ unemployment rate\n\nBenefits:\n✅ Lower investment ($800K vs $1.05M)\n✅ Same green card outcome\n✅ More project options\n\nMost of our projects qualify as TEA!",
+                questions: [
+                    { text: "Show me TEA projects", icon: "fa-map-marked-alt", next: "project_list" },
+                    { text: "← Back to investment info", icon: "fa-arrow-left", next: "investment" }
+                ]
+            },
+            return_capital: {
+                message: "💰 Capital Return:\n\n✅ Your investment must remain \"at risk\" for 2 years\n✅ After I-829 approval, you may be eligible for return\n✅ Timing depends on project structure (typically 5-7 years)\n\n⚠️ EB-5 is primarily for immigration, not investment returns",
+                questions: [
+                    { text: "What's the success rate?", icon: "fa-chart-line", next: "success_rate" },
+                    { text: "← Back to investment info", icon: "fa-arrow-left", next: "investment" }
+                ]
+            },
+            source_funds: {
+                message: "📄 Source of Funds Documentation:\n\nYou need to prove your money came from legal sources:\n\n✅ Tax returns (5+ years)\n✅ Bank statements\n✅ Business records\n✅ Property sale documents\n✅ Gift/inheritance proof\n\nWe help you prepare complete documentation!",
+                questions: [
+                    { text: "Book consultation for guidance", icon: "fa-calendar", next: "consultation" },
+                    { text: "← Back to investment info", icon: "fa-arrow-left", next: "investment" }
+                ]
+            },
+            success_rate: {
+                message: "📊 EKA EB5 Success Rate:\n\n🎯 98% I-526 approval rate\n🎯 150+ families successfully served\n🎯 1500 Cr+ investments processed\n\nOur thorough preparation ensures maximum success!",
+                questions: [
+                    { text: "Read client testimonials", icon: "fa-star", action: "scrollToTestimonials" },
+                    { text: "Book free consultation", icon: "fa-calendar", next: "consultation" },
+                    { text: "← Back to main menu", icon: "fa-arrow-left", next: "initial" }
+                ]
+            }
+        };
 
-        function addMessage(message, isUser = false) {
+        // Add Message Function
+        function addMessage(message, isUser = false, showQuestions = null) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
-            messageDiv.innerHTML = `<div class="message-bubble">${message}</div>`;
+            
+            let content = `<div class="message-bubble">${message}</div>`;
+            
+            if (showQuestions && !isUser) {
+                content += '<div class="quick-replies">';
+                showQuestions.forEach(q => {
+                    const action = q.action ? `data-action="${q.action}"` : '';
+                    const next = q.next ? `data-next="${q.next}"` : '';
+                    content += `
+                        <button class="quick-reply-btn" ${action} ${next}>
+                            <i class="fas ${q.icon}"></i>
+                            ${q.text}
+                        </button>
+                    `;
+                });
+                content += '</div>';
+            }
+            
+            messageDiv.innerHTML = content;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
 
-        function getBotResponse(userMessage) {
-            const lowerMessage = userMessage.toLowerCase();
-            
-            if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-                return "Hello! I'm here to help you with your EB-5 visa questions. What would you like to know?";
-            } else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('investment')) {
-                return "The EB-5 program requires a minimum investment of $800,000 for projects in Targeted Employment Areas (TEA) or $1,050,000 for standard projects. Would you like to know more about our vetted projects?";
-            } else if (lowerMessage.includes('time') || lowerMessage.includes('how long')) {
-                return "The EB-5 process typically takes 4-6 years from initial investment to permanent green card. Processing times vary based on USCIS workload and country-specific visa availability.";
-            } else if (lowerMessage.includes('eligible') || lowerMessage.includes('qualify')) {
-                return "To qualify for EB-5, you need: 1) Lawful source of investment funds, 2) Minimum investment amount, 3) Investment in a USCIS-approved project that creates 10 jobs. Would you like a free eligibility assessment?";
-            } else if (lowerMessage.includes('green card')) {
-                return "The EB-5 visa leads to a conditional 2-year green card, which can be converted to permanent residency after demonstrating job creation requirements. Your spouse and unmarried children under 21 are also eligible.";
-            } else if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('email')) {
-                return "You can reach us at info@ekaeb5visa.com or call/WhatsApp +91-7979007970. Our office hours are Monday-Friday 9 AM-6 PM IST. Would you like to schedule a consultation?";
-            } else {
-                return "That's a great question! For detailed information, I recommend scheduling a free consultation with our experts. You can also email us at info@ekaeb5visa.com or call +91-7979007970.";
+            // Add click handlers to quick reply buttons
+            if (showQuestions && !isUser) {
+                const buttons = messageDiv.querySelectorAll('.quick-reply-btn');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const action = this.getAttribute('data-action');
+                        const next = this.getAttribute('data-next');
+                        
+                        // Add user's choice as message
+                        addMessage(this.textContent.trim(), true);
+                        
+                        if (action) {
+                            handleAction(action);
+                        } else if (next) {
+                            showTypingIndicator();
+                            setTimeout(() => {
+                                removeTypingIndicator();
+                                showConversationState(next);
+                            }, 800);
+                        }
+                    });
+                });
             }
         }
 
+        // Show Typing Indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chatbot-message bot typing-message';
+            typingDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Remove Typing Indicator
+        function removeTypingIndicator() {
+            const typing = chatMessages.querySelector('.typing-message');
+            if (typing) typing.remove();
+        }
+
+        // Show Conversation State
+        function showConversationState(state) {
+            conversationState = state;
+            const flow = questionFlow[state];
+            if (flow) {
+                addMessage(flow.message, false, flow.questions);
+            }
+        }
+
+        // Handle Actions
+        function handleAction(action) {
+            switch(action) {
+                case 'openCalendly':
+                    window.open('https://calendly.com/eka-eb5', '_blank');
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        removeTypingIndicator();
+                        addMessage("Great! The Calendly booking page should open in a new tab. If it doesn't, please check your popup blocker.", false);
+                    }, 1000);
+                    break;
+                case 'openWhatsApp':
+                    window.open('https://wa.me/917979007970?text=Hi%2C%20I%27m%20interested%20in%20EB-5%20visa%20consultation', '_blank');
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        removeTypingIndicator();
+                        addMessage("Perfect! WhatsApp should open now. Our team will respond within minutes!", false);
+                    }, 1000);
+                    break;
+                case 'scrollToTestimonials':
+                    chatbotModal.classList.remove('active');
+                    document.querySelector('#testimonials')?.scrollIntoView({ behavior: 'smooth' });
+                    break;
+            }
+        }
+
+        // Handle Custom Text Input
         function sendMessage() {
             const message = chatInput.value.trim();
             if (message) {
                 addMessage(message, true);
                 chatInput.value = '';
                 
+                showTypingIndicator();
                 setTimeout(() => {
-                    const response = getBotResponse(message);
-                    addMessage(response);
+                    removeTypingIndicator();
+                    const response = getSmartResponse(message);
+                    addMessage(response.message, false, response.questions);
                 }, 1000);
             }
         }
+
+        // Smart Response Generator
+        function getSmartResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('investment') || lowerMessage.includes('money')) {
+                return questionFlow.investment;
+            } else if (lowerMessage.includes('time') || lowerMessage.includes('how long') || lowerMessage.includes('duration')) {
+                return questionFlow.timeline;
+            } else if (lowerMessage.includes('eligible') || lowerMessage.includes('qualify') || lowerMessage.includes('requirements')) {
+                return questionFlow.eligibility;
+            } else if (lowerMessage.includes('project') || lowerMessage.includes('investment option')) {
+                return questionFlow.projects;
+            } else if (lowerMessage.includes('contact') || lowerMessage.includes('call') || lowerMessage.includes('email') || lowerMessage.includes('consultation')) {
+                return questionFlow.consultation;
+            } else {
+                return {
+                    message: "That's a great question! For detailed information, I recommend exploring our quick options or booking a free consultation with our experts.",
+                    questions: questionFlow.initial.questions
+                };
+            }
+        }
+
+        // Event Listeners
+        chatToggle.addEventListener('click', function() {
+            chatbotModal.classList.add('active');
+            if (chatMessages.children.length === 0) {
+                showConversationState('initial');
+            }
+        });
+
+        chatClose.addEventListener('click', function() {
+            chatbotModal.classList.remove('active');
+        });
 
         chatSend.addEventListener('click', sendMessage);
         chatInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 sendMessage();
-            }
-        });
-
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toISOString()
-            };
-
-            // Store in localStorage
-            let submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-            submissions.push(formData);
-            localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
-
-            // Show success message
-            const messageDiv = document.getElementById('form-message');
-            messageDiv.className = 'form-message success';
-            messageDiv.textContent = 'Thank you for your interest! We will contact you within 24 hours.';
-            
-            // Reset form
-            this.reset();
-
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                messageDiv.className = 'form-message';
-                messageDiv.textContent = '';
-            }, 5000);
-        });
-
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-            const navMenu = document.querySelector('.nav-menu');
-            if (navMenu.style.display === 'flex') {
-                navMenu.style.display = 'none';
-            } else {
-                navMenu.style.display = 'flex';
-                navMenu.style.flexDirection = 'column';
-                navMenu.style.position = 'absolute';
-                navMenu.style.top = '100%';
-                navMenu.style.left = '0';
-                navMenu.style.right = '0';
-                navMenu.style.background = 'white';
-                navMenu.style.padding = '1rem';
-                navMenu.style.boxShadow = 'var(--shadow-lg)';
             }
         });
     </script>
