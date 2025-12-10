@@ -1,5 +1,5 @@
 /* ========================================
-   WHATSAPP & CALL WIDGET STYLES
+   WHATSAPP WIDGET STYLES
    Week 2 - Communication Features
    ======================================== */
 
@@ -11,50 +11,11 @@
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 25px; /* Increased to 25px for better spacing */
+  gap: 15px;
   align-items: center;
 }
 
-/* Call Floating Button (Top) */
-.call-float {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #5a8a87 0%, #2d4a47 100%);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 4px 12px rgba(90, 138, 135, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  position: relative;
-  animation: pulse-call 2.5s infinite;
-  flex-shrink: 0; /* Prevent shrinking */
-}
-
-.call-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(90, 138, 135, 0.6);
-}
-
-.call-float i {
-  line-height: 1;
-}
-
-/* Call Pulse Animation */
-@keyframes pulse-call {
-  0%, 100% {
-    box-shadow: 0 4px 12px rgba(90, 138, 135, 0.4);
-  }
-  50% {
-    box-shadow: 0 4px 20px rgba(90, 138, 135, 0.7), 0 0 0 10px rgba(90, 138, 135, 0.1);
-  }
-}
-
-/* WhatsApp Floating Button (Bottom) */
+/* WhatsApp Floating Button */
 .whatsapp-float {
   width: 60px;
   height: 60px;
@@ -71,7 +32,7 @@
   text-decoration: none;
   position: relative;
   animation: pulse-whatsapp 2s infinite;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
 }
 
 .whatsapp-float:hover {
@@ -111,125 +72,8 @@
   font-weight: 500;
 }
 
-.whatsapp-float:hover .tooltip,
-.call-float:hover .tooltip {
+.whatsapp-float:hover .tooltip {
   opacity: 1;
-}
-
-/* Multi-Channel Contact Bar (Top) */
-.contact-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, #2d4a47 0%, #5a8a87 100%);
-  color: white;
-  padding: 12px 20px;
-  z-index: 9998;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transform: translateY(-100%);
-  animation: slideDown 0.5s ease forwards 1s;
-}
-
-@keyframes slideDown {
-  to {
-    transform: translateY(0);
-  }
-}
-
-.contact-bar.hidden {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-}
-
-.contact-bar-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 8px 16px;
-  border-radius: 6px;
-}
-
-.contact-bar-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.contact-bar-item i {
-  font-size: 18px;
-}
-
-.contact-bar-close {
-  position: absolute;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.contact-bar-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(90deg);
-}
-
-/* Click-to-Call Buttons (Inline) */
-.cta-call-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #5a8a87 0%, #2d4a47 100%);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(90, 138, 135, 0.3);
-  border: none;
-  cursor: pointer;
-}
-
-.cta-call-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(90, 138, 135, 0.4);
-}
-
-.cta-call-button i {
-  font-size: 20px;
-  animation: ring 2s infinite;
-}
-
-@keyframes ring {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  10%, 30% {
-    transform: rotate(-15deg);
-  }
-  20%, 40% {
-    transform: rotate(15deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
 }
 
 /* WhatsApp CTA Button (Inline) */
@@ -259,126 +103,33 @@
   font-size: 20px;
 }
 
-/* Mobile Responsiveness */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .floating-contact-buttons {
     bottom: 15px;
     right: 15px;
-    gap: 20px; /* Maintain good spacing on mobile */
-  }
-
-  .whatsapp-float,
-  .call-float {
-    width: 55px;
-    height: 55px;
   }
 
   .whatsapp-float {
+    width: 55px;
+    height: 55px;
     font-size: 28px;
   }
 
-  .call-float {
-    font-size: 24px;
+  .tooltip {
+    display: none;
   }
-
-  .contact-bar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .contact-bar-item {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  .contact-bar-item i {
-    font-size: 16px;
-  }
-
-  .cta-call-button,
-  .cta-whatsapp-button {
-    padding: 12px 20px;
-    font-size: 14px;
-  }
-}
-
-/* Tablet Responsiveness */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .floating-contact-buttons {
-    gap: 22px;
-  }
-
-  .whatsapp-float,
-  .call-float {
-    width: 58px;
-    height: 58px;
-  }
-}
-
-/* Ensure widgets don't overlap with chatbot or other elements */
-.floating-contact-buttons {
-  margin-bottom: 0;
-  pointer-events: none; /* Allow clicks to pass through container */
-}
-
-.floating-contact-buttons > * {
-  pointer-events: auto; /* But enable clicks on buttons */
 }
 
 /* Accessibility */
-.whatsapp-float:focus,
-.call-float:focus {
-  outline: 3px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
+.whatsapp-float:focus {
+  outline: 3px solid #25D366;
+  outline-offset: 3px;
 }
 
-/* Print styles - hide widgets when printing */
+/* Print - hide widgets */
 @media print {
-  .floating-contact-buttons,
-  .contact-bar {
+  .floating-contact-buttons {
     display: none !important;
   }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .whatsapp-float,
-  .call-float {
-    border: 2px solid white;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .whatsapp-float,
-  .call-float {
-    animation: none;
-  }
-
-  .whatsapp-float:hover,
-  .call-float:hover {
-    transform: none;
-  }
-
-  .cta-call-button i {
-    animation: none;
-  }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .tooltip {
-    background: rgba(255, 255, 255, 0.95);
-    color: #000;
-  }
-}
-
-/* Prevent any potential overlap issues */
-.call-float {
-  margin-bottom: 0 !important;
-}
-
-.whatsapp-float {
-  margin-top: 0 !important;
 }
