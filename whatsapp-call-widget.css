@@ -11,7 +11,7 @@
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px; /* Increased from 12px to 20px to prevent overlap */
 }
 
 /* WhatsApp Floating Button */
@@ -254,103 +254,12 @@
   font-size: 20px;
 }
 
-/* Phone Number Display (Desktop) */
-.phone-display {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: #f8f8f8;
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: 2px solid #5a8a87;
-}
-
-.phone-display .number {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2d4a47;
-  letter-spacing: 1px;
-}
-
-.phone-display .copy-btn {
-  background: #5a8a87;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.phone-display .copy-btn:hover {
-  background: #2d4a47;
-}
-
-.phone-display .copy-btn.copied {
-  background: #25D366;
-}
-
-/* Mobile Optimizations */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .floating-contact-buttons {
     bottom: 15px;
     right: 15px;
-    gap: 10px;
-  }
-
-  .whatsapp-float,
-  .call-float {
-    width: 50px;
-    height: 50px;
-    font-size: 26px;
-  }
-
-  .contact-bar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .contact-bar-item {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-
-  .contact-bar-item i {
-    font-size: 16px;
-  }
-
-  .cta-call-button,
-  .cta-whatsapp-button {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 20px;
-    font-size: 15px;
-  }
-
-  .phone-display {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
-  }
-
-  .phone-display .number {
-    font-size: 18px;
-  }
-
-  /* Hide tooltip on mobile */
-  .tooltip {
-    display: none;
-  }
-}
-
-/* Tablet Optimizations */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .floating-contact-buttons {
-    bottom: 18px;
-    right: 18px;
+    gap: 18px; /* Slightly smaller gap on mobile but still no overlap */
   }
 
   .whatsapp-float,
@@ -360,12 +269,58 @@
     font-size: 28px;
   }
 
+  .call-float {
+    font-size: 24px;
+  }
+
   .contact-bar {
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .contact-bar-item {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .contact-bar-item i {
+    font-size: 16px;
+  }
+
+  .cta-call-button,
+  .cta-whatsapp-button {
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }
 
-/* Print Styles */
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .floating-contact-buttons {
+    gap: 18px;
+  }
+
+  .whatsapp-float,
+  .call-float {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* Ensure widgets don't overlap with chatbot */
+.floating-contact-buttons {
+  margin-bottom: 0;
+}
+
+/* Accessibility */
+.whatsapp-float:focus,
+.call-float:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Print styles - hide widgets when printing */
 @media print {
   .floating-contact-buttons,
   .contact-bar {
@@ -373,41 +328,35 @@
   }
 }
 
-/* Accessibility */
-.whatsapp-float:focus,
-.call-float:focus,
-.contact-bar-item:focus,
-.cta-call-button:focus,
-.cta-whatsapp-button:focus {
-  outline: 3px solid #ffd700;
-  outline-offset: 2px;
-}
-
-/* High Contrast Mode */
+/* High contrast mode support */
 @media (prefers-contrast: high) {
   .whatsapp-float,
   .call-float {
     border: 2px solid white;
   }
-
-  .contact-bar {
-    border-bottom: 2px solid white;
-  }
 }
 
-/* Reduced Motion */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float,
   .call-float {
     animation: none;
   }
 
-  .contact-bar {
-    animation: none;
-    transform: translateY(0);
+  .whatsapp-float:hover,
+  .call-float:hover {
+    transform: none;
   }
 
   .cta-call-button i {
     animation: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
   }
 }
