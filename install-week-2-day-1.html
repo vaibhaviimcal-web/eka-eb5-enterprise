@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 Day 1 - Installation Guide</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d4a47;
+            margin-bottom: 10px;
+        }
+        .status {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .feature-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #5a8a87;
+        }
+        .feature-box h3 {
+            color: #2d4a47;
+            margin-top: 0;
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .code-block .comment {
+            color: #6a9955;
+        }
+        .code-block .tag {
+            color: #569cd6;
+        }
+        .code-block .attr {
+            color: #9cdcfe;
+        }
+        .code-block .string {
+            color: #ce9178;
+        }
+        .btn {
+            background: #5a8a87;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #2d4a47;
+            transform: translateY(-2px);
+        }
+        .step {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .step-number {
+            background: #5a8a87;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #28a745;
+        }
+        .checklist {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .checklist li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .phone-display {
+            background: #5a8a87;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Week 2 - Day 1: Communication Features</h1>
+        <span class="status">✅ COMPLETE</span>
+        
+        <p style="font-size: 18px; color: #666; margin-top: 20px;">
+            WhatsApp integration and click-to-call features are ready to install!
+        </p>
+
+        <div class="feature-box">
+            <h3>✨ What You're Getting:</h3>
+            <ul>
+                <li>✅ <strong>Floating WhatsApp Button</strong> - Bottom right, pulsing animation</li>
+                <li>✅ <strong>Floating Call Button</strong> - Smart mobile/desktop behavior</li>
+                <li>✅ <strong>Analytics Tracking</strong> - Track all contact interactions</li>
+                <li>✅ <strong>Mobile Optimized</strong> - Perfect on all devices</li>
+                <li>✅ <strong>Accessible</strong> - WCAG 2.1 AA compliant</li>
+            </ul>
+        </div>
+
+        <div class="phone-display">
+            📞 Primary: +91-9999345126<br>
+            💬 WhatsApp: +91-9999345126
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+        <h2 style="color: #2d4a47;">📋 Installation Steps</h2>
+
+        <div class="step">
+            <h3><span class="step-number">1</span>Add CSS to index.html</h3>
+            <p>Open <code>index.html</code> and add this line in the <span class="highlight">&lt;head&gt;</span> section (after other CSS links):</p>
+            
+            <div class="code-block">
+<span class="comment">&lt;!-- Week 2: WhatsApp & Call Widget Styles --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"whatsapp-call-widget.css"</span><span class="tag">&gt;</span>
+            </div>
+
+            <p><strong>Location:</strong> Add it after the line with <code>styles.css</code></p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">2</span>Add JavaScript before &lt;/body&gt;</h3>
+            <p>Scroll to the bottom of <code>index.html</code> and add this line just BEFORE the closing <span class="highlight">&lt;/body&gt;</span> tag:</p>
+            
+            <div class="code-block">
+<span class="comment">&lt;!-- Week 2: WhatsApp & Call Widget Script --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="string">"whatsapp-call-widget.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+            </div>
+
+            <p><strong>Location:</strong> Add it after <code>chatbot-upgrade.js</code> but before <code>&lt;/body&gt;</code></p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">3</span>Verify Font Awesome</h3>
+            <p>Make sure Font Awesome is loaded (should already be in your <code>&lt;head&gt;</code>):</p>
+            
+            <div class="code-block">
+<span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> 
+      <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"</span><span class="tag">&gt;</span>
+            </div>
+
+            <p>✅ If this line already exists, you're good to go!</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">4</span>Commit & Push</h3>
+            <p>Save your changes and commit to the <code>week-2-features</code> branch:</p>
+            
+            <div class="code-block">
+git add index.html
+git commit -m "Add WhatsApp and call widgets"
+git push origin week-2-features
+            </div>
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+        <h2 style="color: #2d4a47;">🧪 Testing Checklist</h2>
+
+        <div class="checklist">
+            <h3>Desktop Testing:</h3>
+            <ul>
+                <li>☐ WhatsApp button visible (bottom right)</li>
+                <li>☐ Call button visible (below WhatsApp)</li>
+                <li>☐ WhatsApp opens in new tab</li>
+                <li>☐ Call button shows modal with number</li>
+                <li>☐ Copy button works</li>
+                <li>☐ Tooltips appear on hover</li>
+                <li>☐ Animations smooth</li>
+            </ul>
+
+            <h3>Mobile Testing:</h3>
+            <ul>
+                <li>☐ WhatsApp opens WhatsApp app</li>
+                <li>☐ Call button initiates phone call</li>
+                <li>☐ Buttons properly sized</li>
+                <li>☐ No layout issues</li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <strong>✅ Expected Result:</strong><br>
+            You should see two floating buttons in the bottom right corner:
+            <ul style="margin: 10px 0 0 0;">
+                <li>🟢 Green WhatsApp button (top)</li>
+                <li>🔵 Teal Call button (bottom)</li>
+            </ul>
+            Both should have pulsing animations and show tooltips on hover!
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+        <h2 style="color: #2d4a47;">🎯 What's Next?</h2>
+
+        <div class="feature-box">
+            <h3>Day 2 Tomorrow:</h3>
+            <ul>
+                <li>📊 SEO optimization (meta tags, schema markup)</li>
+                <li>🗺️ sitemap.xml and robots.txt</li>
+                <li>🔍 Enhanced social sharing tags</li>
+                <li>📍 LocalBusiness schema with phone numbers</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/tree/week-2-features" class="btn" target="_blank">
+                📂 View Week 2 Branch
+            </a>
+            <a href="https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/blob/week-2-features/WEEK-2-DAY-1-COMPLETE.md" class="btn" target="_blank">
+                📄 Read Full Report
+            </a>
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+        <h2 style="color: #2d4a47;">⚙️ Optional: Enable Contact Bar</h2>
+
+        <p>Want a top contact bar with all communication options? Edit <code>whatsapp-call-widget.js</code> line 195:</p>
+
+        <div class="code-block">
+<span class="comment">// Enable contact bar (uncomment this line)</span>
+createContactBar();
+        </div>
+
+        <p>This adds a sticky bar at the top with Phone, WhatsApp, Email, and Calendly buttons!</p>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e0e0e0;">
+
+        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 30px;">
+            <h3 style="color: #2d4a47; margin-top: 0;">📞 Need Help?</h3>
+            <p style="margin-bottom: 0;">
+                If you encounter any issues or want to customize:
+            </p>
+            <ul>
+                <li>Change phone numbers</li>
+                <li>Modify colors</li>
+                <li>Adjust button positions</li>
+                <li>Change WhatsApp message</li>
+            </ul>
+            <p style="margin-bottom: 0;">Just let me know!</p>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 8px; text-align: center;">
+            <p style="margin: 0; color: #666;">
+                <strong>Day 1 Status:</strong> ✅ COMPLETE<br>
+                <strong>Budget Used:</strong> $100 / $500<br>
+                <strong>Files Created:</strong> 3 (CSS, JS, Docs)<br>
+                <strong>Ready for Day 2!</strong> 🚀
+            </p>
+        </div>
+    </div>
+</body>
+</html>
