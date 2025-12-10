@@ -49,22 +49,7 @@
     container.setAttribute('role', 'complementary');
     container.setAttribute('aria-label', 'Contact options');
 
-    // WhatsApp Button
-    const whatsappBtn = document.createElement('a');
-    whatsappBtn.href = `https://wa.me/${CONFIG.primaryPhone}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
-    whatsappBtn.className = 'whatsapp-float';
-    whatsappBtn.target = '_blank';
-    whatsappBtn.rel = 'noopener noreferrer';
-    whatsappBtn.setAttribute('aria-label', 'Chat on WhatsApp');
-    whatsappBtn.innerHTML = `
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
-      <span class="tooltip">WhatsApp Us</span>
-    `;
-    whatsappBtn.addEventListener('click', function() {
-      trackEvent('Contact', 'whatsapp_click', 'floating_button');
-    });
-
-    // Call Button
+    // Call Button (appears on TOP)
     const callBtn = document.createElement('a');
     if (isMobile()) {
       callBtn.href = `tel:+${CONFIG.primaryPhone}`;
@@ -85,8 +70,24 @@
       trackEvent('Contact', 'call_click', 'floating_button');
     });
 
-    container.appendChild(whatsappBtn);
+    // WhatsApp Button (appears on BOTTOM)
+    const whatsappBtn = document.createElement('a');
+    whatsappBtn.href = `https://wa.me/${CONFIG.primaryPhone}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
+    whatsappBtn.className = 'whatsapp-float';
+    whatsappBtn.target = '_blank';
+    whatsappBtn.rel = 'noopener noreferrer';
+    whatsappBtn.setAttribute('aria-label', 'Chat on WhatsApp');
+    whatsappBtn.innerHTML = `
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+      <span class="tooltip">WhatsApp Us</span>
+    `;
+    whatsappBtn.addEventListener('click', function() {
+      trackEvent('Contact', 'whatsapp_click', 'floating_button');
+    });
+
+    // IMPORTANT: Add Call button FIRST (top), then WhatsApp (bottom)
     container.appendChild(callBtn);
+    container.appendChild(whatsappBtn);
     document.body.appendChild(container);
   }
 
@@ -121,14 +122,30 @@
 
     modal.innerHTML = `
       <h3 style="color: #2d4a47; margin-bottom: 20px; font-size: 24px;">Call Us Now</h3>
-      <div class="phone-display">
-        <span class="number">${formatPhoneDisplay(phone)}</span>
-        <button class="copy-btn" onclick="copyPhoneNumber('${phone}', this)">
-          <i class="fas fa-copy"></i> Copy
+      <div class="phone-display" style="
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      ">
+        <div style="font-size: 28px; font-weight: bold; color: #2d4a47; margin-bottom: 15px;">
+          ${formatPhoneDisplay(phone)}
+        </div>
+        <button onclick="copyPhoneNumber('${phone}', this)" style="
+          background: #5a8a87;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 14px;
+        ">
+          <i class="fas fa-copy"></i> Copy Number
         </button>
       </div>
       <p style="color: #666; margin-top: 15px; font-size: 14px;">
-        Click the number to copy, then paste in your phone app
+        Click "Copy Number" to copy, then paste in your phone app
       </p>
       <button onclick="closePhoneModal()" style="
         margin-top: 20px;
@@ -162,11 +179,11 @@
       const formatted = formatPhoneDisplay(phone);
       navigator.clipboard.writeText(formatted).then(function() {
         btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        btn.classList.add('copied');
+        btn.style.background = '#25D366';
         trackEvent('Contact', 'phone_copied', formatted);
         setTimeout(function() {
-          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-          btn.classList.remove('copied');
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy Number';
+          btn.style.background = '#5a8a87';
         }, 2000);
       });
     };
@@ -249,47 +266,38 @@
     // Find all phone links
     document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
       link.addEventListener('click', function() {
-        const phone = this.href.replace('tel:', '');
-        trackEvent('Contact', 'phone_link_click', phone);
+        trackEvent('Contact', 'phone_link_click', this.href);
+      });
+    });
+
+    // Find all WhatsApp links
+    document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        trackEvent('Contact', 'whatsapp_link_click', this.href);
       });
     });
 
     // Find all email links
     document.querySelectorAll('a[href^="mailto:"]').forEach(function(link) {
       link.addEventListener('click', function() {
-        trackEvent('Contact', 'email_link_click', this.href.replace('mailto:', ''));
-      });
-    });
-
-    // Find all WhatsApp links
-    document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
-      link.addEventListener('click', function() {
-        trackEvent('Contact', 'whatsapp_link_click', 'inline_link');
+        trackEvent('Contact', 'email_link_click', this.href);
       });
     });
   }
 
   // Initialize on DOM ready
-  function init() {
-    // Wait for DOM to be fully loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-      return;
-    }
-
-    // Create floating buttons
-    createFloatingButtons();
-
-    // Create contact bar (optional - can be disabled)
-    // createContactBar();
-
-    // Enhance existing buttons
-    enhanceExistingButtons();
-
-    console.log('WhatsApp & Call Widget initialized');
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 
-  // Start initialization
-  init();
+  function init() {
+    createFloatingButtons();
+    // Uncomment to enable contact bar
+    // createContactBar();
+    enhanceExistingButtons();
+    console.log('EKA EB5 Contact Widgets Initialized');
+  }
 
 })();
