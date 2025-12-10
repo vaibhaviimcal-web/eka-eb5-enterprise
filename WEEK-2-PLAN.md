@@ -3,13 +3,13 @@
 **Branch:** `week-2-features`  
 **Budget:** $500 (10 hours)  
 **Timeline:** 1 Week  
-**Status:** 🟡 Planning
+**Status:** 🟢 IN PROGRESS
 
 ---
 
 ## 🎯 WEEK 2 OBJECTIVES
 
-Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Features** that don't require database integration.
+Build on Week 1's stable foundation with **SEO, Accessibility, Performance, Analytics, and Enhanced Communication Features**.
 
 ---
 
@@ -33,7 +33,37 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ## 🎯 WEEK 2 FEATURES (NEW BRANCH)
 
-### **1. SEO Optimization** (2 hours)
+### **1. Enhanced Communication Features** (2 hours)
+
+#### WhatsApp Integration (9999345126)
+- ✅ Floating WhatsApp button (bottom right)
+- ✅ Pulsing animation
+- ✅ Pre-filled message
+- ✅ Mobile optimized
+- ✅ Analytics tracking
+
+#### Click-to-Call Features
+- ✅ Click-to-call buttons (all pages)
+- ✅ Primary: +91-9999345126
+- ✅ Secondary: +91-7979007970
+- ✅ Mobile detection (auto-dial on mobile)
+- ✅ Desktop: Show number with copy button
+- ✅ Call tracking in analytics
+
+#### Multi-Channel Contact Bar
+- ✅ Sticky contact bar (top or bottom)
+- ✅ WhatsApp, Call, Email, Calendly buttons
+- ✅ Slide-in animation
+- ✅ Collapsible on scroll
+
+**Expected Impact:**
+- 📞 +50% phone inquiries
+- 💬 +40% WhatsApp conversations
+- 📈 Better lead capture
+
+---
+
+### **2. SEO Optimization** (2 hours)
 
 #### Meta Tags Enhancement
 - ✅ Primary meta tags (title, description, keywords)
@@ -48,6 +78,7 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 - ✅ FAQ schema
 - ✅ Breadcrumb schema
 - ✅ Review/Rating schema
+- ✅ LocalBusiness schema (with phone numbers)
 
 #### SEO Files
 - ✅ sitemap.xml (all pages)
@@ -61,7 +92,7 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ---
 
-### **2. Accessibility (WCAG 2.1 AA)** (2 hours)
+### **3. Accessibility (WCAG 2.1 AA)** (1.5 hours)
 
 #### Keyboard Navigation
 - ✅ Tab order optimization
@@ -88,7 +119,7 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ---
 
-### **3. Performance Optimization** (2 hours)
+### **4. Performance Optimization** (1.5 hours)
 
 #### Image Optimization
 - ✅ Convert to WebP format
@@ -115,7 +146,7 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ---
 
-### **4. Analytics & Tracking** (2 hours)
+### **5. Analytics & Tracking** (1.5 hours)
 
 #### Google Analytics 4
 - ✅ GA4 installation
@@ -131,12 +162,14 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 #### Custom Events
 - ✅ Button clicks
-- ✅ Phone/email clicks
+- ✅ Phone clicks (both numbers)
+- ✅ WhatsApp clicks
+- ✅ Email clicks
 - ✅ Scroll depth (25%, 50%, 75%, 100%)
 - ✅ Time on page
 - ✅ Outbound links
-- ✅ WhatsApp clicks
 - ✅ Calendly bookings
+- ✅ Chatbot interactions
 
 **Expected Impact:**
 - 📊 Full user behavior visibility
@@ -145,7 +178,7 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ---
 
-### **5. Advanced Features** (2 hours)
+### **6. Advanced Features** (1.5 hours)
 
 #### Interactive FAQ Section
 - ✅ Accordion with smooth animations
@@ -183,25 +216,42 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ## 📋 IMPLEMENTATION CHECKLIST
 
-### **Day 1-2: SEO & Accessibility**
+### **Day 1: Communication Features**
+- [x] WhatsApp floating button (9999345126)
+- [x] Click-to-call buttons (9999345126, 7979007970)
+- [x] Multi-channel contact bar
+- [x] Mobile detection
+- [x] Analytics tracking setup
+
+### **Day 2: SEO Optimization**
 - [ ] Add meta tags to all pages
 - [ ] Implement schema markup
 - [ ] Create sitemap.xml and robots.txt
+- [ ] Add phone numbers to LocalBusiness schema
+- [ ] Test rich snippets
+
+### **Day 3: Accessibility**
 - [ ] Add ARIA labels
 - [ ] Fix color contrast issues
 - [ ] Implement keyboard navigation
 - [ ] Test with screen readers
+- [ ] Add skip links
 
-### **Day 3-4: Performance & Analytics**
+### **Day 4: Performance**
 - [ ] Convert images to WebP
 - [ ] Implement lazy loading
 - [ ] Minify CSS/JS
+- [ ] Test page speed
+- [ ] Optimize loading strategy
+
+### **Day 5: Analytics**
 - [ ] Install Google Analytics 4
 - [ ] Install Microsoft Clarity
 - [ ] Add custom event tracking
-- [ ] Test page speed
+- [ ] Test all events
+- [ ] Verify data collection
 
-### **Day 5-6: Advanced Features**
+### **Day 6: Advanced Features**
 - [ ] Build FAQ accordion
 - [ ] Create testimonial slider
 - [ ] Add resource library
@@ -218,28 +268,52 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ---
 
+## 📞 CONTACT INFORMATION
+
+### **Primary Contact:**
+- **Phone:** +91-9999345126
+- **WhatsApp:** +91-9999345126
+
+### **Secondary Contact:**
+- **Phone:** +91-7979007970
+- **WhatsApp:** +91-7979007970
+
+### **Email:**
+- info@ekaeb5visa.com
+
+### **Calendly:**
+- Integrated scheduling widget
+
+---
+
 ## 🧪 TESTING REQUIREMENTS
 
 ### **Before Merging to Main:**
 
-1. **Performance**
+1. **Communication Features**
+   - [ ] WhatsApp button opens correct number
+   - [ ] Click-to-call works on mobile
+   - [ ] Click-to-call shows number on desktop
+   - [ ] All contact methods tracked in analytics
+
+2. **Performance**
    - [ ] Google PageSpeed: 90+ (mobile & desktop)
    - [ ] Page load: <2 seconds
    - [ ] First Contentful Paint: <1.5s
 
-2. **Accessibility**
+3. **Accessibility**
    - [ ] WAVE: 0 errors
    - [ ] Lighthouse Accessibility: 95+
    - [ ] Keyboard navigation: 100% functional
    - [ ] Screen reader: All content accessible
 
-3. **SEO**
+4. **SEO**
    - [ ] Lighthouse SEO: 95+
    - [ ] All meta tags present
    - [ ] Schema markup valid
    - [ ] Sitemap accessible
 
-4. **Cross-Browser**
+5. **Cross-Browser**
    - [ ] Chrome (latest)
    - [ ] Firefox (latest)
    - [ ] Safari (latest)
@@ -247,10 +321,11 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
    - [ ] Mobile Safari (iOS)
    - [ ] Chrome Mobile (Android)
 
-5. **Analytics**
+6. **Analytics**
    - [ ] GA4 tracking verified
    - [ ] Clarity recording verified
    - [ ] All custom events firing
+   - [ ] Phone/WhatsApp clicks tracked
 
 ---
 
@@ -264,13 +339,62 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 | PageSpeed Score | 75 | 90+ | +20% |
 | Accessibility Score | 80 | 95+ | +19% |
 | SEO Score | 85 | 95+ | +12% |
-| Organic Traffic | Baseline | +50% | Week 3-4 |
+| Phone Inquiries | Baseline | +50% | Week 2-3 |
+| WhatsApp Chats | Baseline | +40% | Week 2-3 |
 | Bounce Rate | 60% | 45% | -25% |
 | Time on Site | 2:30 | 3:30 | +40% |
 
 ---
 
-## 🔄 DEPLOYMENT STRATEGY
+## 💰 BUDGET BREAKDOWN
+
+| Task | Hours | Cost |
+|------|-------|------|
+| Communication Features | 2h | $100 |
+| SEO Optimization | 2h | $100 |
+| Accessibility | 1.5h | $75 |
+| Performance | 1.5h | $75 |
+| Analytics | 1.5h | $75 |
+| Advanced Features | 1.5h | $75 |
+| **TOTAL** | **10h** | **$500** |
+
+---
+
+## 🎯 DELIVERABLES
+
+### **Code Files:**
+- ✅ WhatsApp floating button component
+- ✅ Click-to-call button component
+- ✅ Multi-channel contact bar
+- ✅ Enhanced meta tags (all pages)
+- ✅ Schema markup (JSON-LD)
+- ✅ sitemap.xml
+- ✅ robots.txt
+- ✅ humans.txt
+- ✅ Optimized images (WebP)
+- ✅ Minified CSS/JS
+- ✅ Analytics tracking scripts
+- ✅ FAQ accordion component
+- ✅ Testimonial slider component
+- ✅ Resource library section
+- ✅ Interactive timeline component
+
+### **Documentation:**
+- ✅ Week 2 implementation guide
+- ✅ Analytics setup guide
+- ✅ Accessibility audit report
+- ✅ Performance audit report
+- ✅ Testing checklist
+
+### **Assets:**
+- ✅ Optimized images (WebP)
+- ✅ Downloadable PDFs (4 files)
+- ✅ Favicon set (multiple sizes)
+- ✅ OG images (social sharing)
+
+---
+
+## 🚀 DEPLOYMENT STRATEGY
 
 ### **Safe Deployment Process:**
 
@@ -301,71 +425,15 @@ Build on Week 1's stable foundation with **SEO, Accessibility, and Advanced Feat
 
 ---
 
-## 💰 BUDGET BREAKDOWN
+## 📍 IMPORTANT LINKS
 
-| Task | Hours | Cost |
-|------|-------|------|
-| SEO Optimization | 2h | $100 |
-| Accessibility | 2h | $100 |
-| Performance | 2h | $100 |
-| Analytics | 2h | $100 |
-| Advanced Features | 2h | $100 |
-| **TOTAL** | **10h** | **$500** |
+- **Live Site (Stable):** https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/
+- **Main Branch:** https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/tree/main
+- **Week 2 Branch:** https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/tree/week-2-features
+- **Week 2 Plan:** https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/blob/week-2-features/WEEK-2-PLAN.md
 
 ---
 
-## 🎯 DELIVERABLES
-
-### **Code Files:**
-- ✅ Enhanced meta tags (all pages)
-- ✅ Schema markup (JSON-LD)
-- ✅ sitemap.xml
-- ✅ robots.txt
-- ✅ humans.txt
-- ✅ Optimized images (WebP)
-- ✅ Minified CSS/JS
-- ✅ Analytics tracking scripts
-- ✅ FAQ accordion component
-- ✅ Testimonial slider component
-- ✅ Resource library section
-- ✅ Interactive timeline component
-
-### **Documentation:**
-- ✅ Week 2 implementation guide
-- ✅ Analytics setup guide
-- ✅ Accessibility audit report
-- ✅ Performance audit report
-- ✅ Testing checklist
-
-### **Assets:**
-- ✅ Optimized images (WebP)
-- ✅ Downloadable PDFs (4 files)
-- ✅ Favicon set (multiple sizes)
-- ✅ OG images (social sharing)
-
----
-
-## 🚀 NEXT STEPS
-
-1. **Review this plan** - Approve features and budget
-2. **Start development** - Begin work on `week-2-features` branch
-3. **Daily updates** - Track progress
-4. **Testing** - Comprehensive testing before merge
-5. **Deploy** - Merge to main when ready
-
----
-
-## 📞 QUESTIONS?
-
-- Want to add/remove features?
-- Need to adjust timeline?
-- Budget concerns?
-- Technical questions?
-
-**Let's discuss and finalize the plan!**
-
----
-
-**Branch URL:** https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/tree/week-2-features  
-**Main (Stable):** https://github.com/vaibhaviimcal-web/eka-eb5-enterprise/tree/main  
-**Live Site:** https://vaibhaviimcal-web.github.io/eka-eb5-enterprise/
+**Status:** 🟢 IN PROGRESS  
+**Started:** Dec 10, 2025  
+**Expected Completion:** Dec 17, 2025
